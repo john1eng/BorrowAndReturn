@@ -1,0 +1,26 @@
+.book{
+  width: 30px;
+  height: 80%;
+  background-color: lightblue;
+  border: 1px solid black;
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 1s linear;
+  display:flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.book span{
+  display:block;
+  white-space: nowrap;
+  font-size: 1rem;
+  padding-top:4px;
+  writing-mode:vertical-lr;
+
+  /* transform: translateX(40%) rotate(90deg); */
+  transform-origin: bottom left;
+  letter-spacing: 1.5px;
+  font-weight:800;
+  text-transform: uppercase;
+}

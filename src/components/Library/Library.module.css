@@ -1,0 +1,11 @@
+.Library{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Title{
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}

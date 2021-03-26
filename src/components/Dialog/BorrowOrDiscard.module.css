@@ -1,0 +1,13 @@
+.BorrowOrDiscard{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BorrowOrDiscard button{
+  margin:25px;
+  margin-top: 20px;
+  width:70px;
+  height: 30px;
+  border-radius: 5px;
+}

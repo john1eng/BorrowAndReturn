@@ -1,0 +1,43 @@
+.Borrow_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  text-align: center;
+}
+.Title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.Borrows {
+  /* width:150px; */
+  overflow-y: auto;
+  height: 300px;
+  /* width:300px; */
+  max-width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transform: rotate(-90deg) translateX(-15px);
+}
+.img_container {
+  width:270px;
+  display:flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  fill:brown;
+}
+
+.img {
+  height: 150px;
+  width: auto;
+  fill:red;
+}
+
+.sortBorrow_btn {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  align-self: center;
+}

@@ -1,0 +1,10 @@
+export const ADD_BOOK = "ADD_BOOK";
+export const DISCARD_BOOK = "DISCARD_BOOK";
+export const DISCARD_BORROW = "DISCARD_BORROW";
+export const SORT_BOOK = "SORT_BOOK";
+export const SORT_BORROW = "SORT_BORROW";
+export const BORROW_BOOK = "BORROW_BOOK";
+export const RETURN_BOOK = "RETURN_BOOK";
+export const SELECTED_BOOK = "SELECTED_BOOK";
+export const SELECTED_BORROW = "SELECTED_BORROW";
+export const REMOVE_DIALOG = "REMOVE_DIALOG";

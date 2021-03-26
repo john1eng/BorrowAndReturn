@@ -1,0 +1,19 @@
+.Header{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 7rem;
+  background-color: #daa132;
+  margin-bottom: 4rem;
+}
+
+.Title{
+  align-self:center;
+  font-size: 2rem;
+  margin-left: 2rem;
+}
+
+.Button_Container{
+  margin-right:2rem;
+}

@@ -1,0 +1,16 @@
+.App_Container {
+  font-family: "Montserrat", sans-serif;
+  /* margin: 6rem auto; */
+  width: 85rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: center;
+  background: url("../src/assets/white-waves/white-waves/white-waves.png");
+  position: relative;
+}
+.Title {
+  margin-bottom: 15px;
+}
+
