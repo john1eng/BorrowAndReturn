@@ -7,13 +7,14 @@ const initialState = {
           {color:'orange', page: 'M', size:'S', title:'giving dog'}],
   borrowed: [{color:'lightblue', page:'M', size:'L', title:'hunter'},
             {color:'lightgreen', page:'M', size:'L', title:'baker'}],
-  showBorrowDialog: false,
-  showReturnDialog: false,
+  dialog: {
+    showBorrow: false,
+    showReturn: false,
+  },
   selectedBook: null,
-  ref: []
 };
 
-const addBook = (state, action) => {
+const addNewBook = (state, action) => {
   return {
     ...state,
         books: [...state.books, {
@@ -23,24 +24,6 @@ const addBook = (state, action) => {
           size:   action.payload.size
         }]
   }
-}
-
-const discardBook = (state, action) => {
-  const updatedBooks = state.books.filter((_, ind)=> state.selectedBook !== ind);
-      return {
-        ...state,
-        books: updatedBooks,
-        showBorrowDialog: false,
-      };
-}
-
-const discardBorrow = (state, action) => {
-  const updatedBorrows = state.borrowed.filter((_, ind)=> state.selectedBook !== ind);
-      return {
-        ...state,
-        borrowed: updatedBorrows,
-        showReturnDialog: false,
-      };
 }
 
 const sortBook = (state, action) => {
@@ -62,32 +45,60 @@ const sortBorrow = (state, action) => {
       }
 }
 
-const borrowBook = (state, action) => {
-  const updatedBooks1 = state.books.filter((_, ind)=> state.selectedBook !== ind)
-      let newBorrowedBook = state.books[state.selectedBook]
-      return {
-        ...state,
-        books: updatedBooks1,
-        borrowed: [...state.borrowed, newBorrowedBook],
-        showBorrowDialog: false
-      }
+// const borrowBook = (state, action) => {
+//   const updatedBooks1 = state.books.filter((_, ind)=> state.selectedBook !== ind)
+//       let newBorrowedBook = state.books[state.selectedBook]
+//       return {
+//         ...state,
+//         books: updatedBooks1,
+//         borrowed: [...state.borrowed, newBorrowedBook],
+//         showBorrowDialog: false
+//       }
+// }
+const removeBorrow = (state, action) => {
+  const updatedBorrow = state.borrowed.filter((_, ind) => state.selectedBook !== ind)
+  return {
+    ...state,
+    borrowed: updatedBorrow
+  }
 }
 
-const returnBook = (state, action) => {
-  const updateBorrowed = state.borrowed.filter((_, ind) => state.selectedBook !== ind)
-      return{
-        ...state,
-        books: [...state.books, state.borrowed[state.selectedBook]],
-        borrowed: updateBorrowed,
-        showReturnDialog: false
-      }
+const addBorrow = (state, action) => {
+  return{
+    ...state,
+    borrowed: [...state.borrowed, state.books[state.selectedBook]]
+  }
 }
+
+const removeBook = (state, action) => {
+  const updatedBooks = state.books.filter((_, ind)=> state.selectedBook !== ind)
+  return {
+    ...state,
+    books: updatedBooks
+  }
+}
+
+const addReturnBook = (state, action) => {
+  return{
+    ...state,
+    books: [...state.books, state.borrowed[state.selectedBook]]
+  }
+}
+
+// const returnBook = (state, action) => {
+//   const updateBorrowed = state.borrowed.filter((_, ind) => state.selectedBook !== ind)
+//       return{
+//         ...state,
+//         books: [...state.books, state.borrowed[state.selectedBook]],
+//         borrowed: updateBorrowed,
+//         showReturnDialog: false
+//       }
+// }
 
 const selectedBook = (state, action) => {
   return {
     ...state,
-    selectedBook: action.payload,
-    showBorrowDialog: true
+    selectedBook: action.payload
   }
 }
 
@@ -95,29 +106,40 @@ const selectedBorrow = (state, action) => {
   return {
     ...state,
     selectedBook: action.payload,
-    showReturnDialog: true
   }
 }
 
-const removeDialog = (state, action) => {
+const toggleReturnDialog = (state, action) => {
   return {
     ...state,
-    showBorrowDialog: false,
-    showReturnDialog: false
+    dialog: {...state.dialog, showReturn: !state.dialog.showReturn}
   }
 }
+
+const toggleBorrowDialog = (state, action) => {
+  return {
+    ...state,
+    dialog: {...state.dialog, showBorrow: !state.dialog.showBorrow}
+  }
+}
+
+
+
 const reducer = (state = initialState, action) => {
   switch(action.type){
-    case actionTypes.ADD_BOOK: return addBook(state, action)
-    case actionTypes.DISCARD_BOOK: return discardBook(state, action)     
-    case actionTypes.DISCARD_BORROW: return discardBorrow(state, action)
+    case actionTypes.ADD_NEW_BOOK: return addNewBook(state, action)
     case actionTypes.SORT_BOOK: return sortBook(state, action)  
     case actionTypes.SORT_BORROW: return sortBorrow(state, action)  
-    case actionTypes.BORROW_BOOK: return borrowBook(state, action)
-    case actionTypes.RETURN_BOOK: return returnBook(state, action)
+    // case actionTypes.BORROW_BOOK: return borrowBook(state, action)
+    case actionTypes.REMOVE_BOOK: return removeBook(state, action)
+    case actionTypes.ADD_RETURN_BOOK: return addReturnBook(state, action)
+    case actionTypes.REMOVE_BORROW: return removeBorrow(state, action);
+    case actionTypes.ADD_BORROW: return addBorrow(state, action)
+    // case actionTypes.RETURN_BOOK: return returnBook(state, action)
     case actionTypes.SELECTED_BOOK: return selectedBook(state, action)
     case actionTypes.SELECTED_BORROW: return selectedBorrow(state, action)
-    case actionTypes.REMOVE_DIALOG: return removeDialog(state, action)
+    case actionTypes.TOGGLE_RETURN_DIALOG: return toggleReturnDialog(state, action)
+    case actionTypes.TOGGLE_BORROW_DIALOG: return toggleBorrowDialog(state, action)
     default: return state;
   }
 };
