@@ -1,28 +1,64 @@
 import * as actionTypes from "./actionTypes";
 
-export const discardBook = () => {
+export const addNewBook = (book) => {
   return {
-    type: actionTypes.DISCARD_BOOK,
+    type: actionTypes.ADD_NEW_BOOK,
+    payload: book
+  }
+}
+const removeSelectedBook = () => {
+  return {
+    type: actionTypes.REMOVE_SELECTED_BOOK,
   };
 };
 
-export const discardBorrow = () => {
+const removeSelectedBorrow = () => {
   return {
-    type: actionTypes.DISCARD_BORROW,
+    type: actionTypes.REMOVE_SELECTED_BORROW,
   };
 };
+
+export const removeBookProcess = () => {
+  return dispatch => {
+    dispatch(removeSelectedBook());
+    dispatch(toggleBorrowDialog());
+  }
+}
+
+export const removeBorrowProcess = () => {
+  return dispatch => {
+    dispatch(removeSelectedBorrow());
+    dispatch(toggleReturnDialog());
+  }
+}
+
+const addReturnBook = () => {
+  return {
+    type: actionTypes.ADD_RETURN_BOOK,
+  };
+}
+
+export const ReturnBook = () => {
+  return dispatch => {
+    dispatch(addReturnBook());
+    dispatch(removeSelectedBorrow());
+    dispatch(toggleReturnDialog());
+  }
+}
+
+const addBorrow = () => {
+  return {
+    type: actionTypes.ADD_BORROW
+  }
+}
 
 export const borrowBook = () => {
-  return {
-    type: actionTypes.BORROW_BOOK,
-  };
-};
-
-export const returnBook = () => {
-  return {
-    type: actionTypes.RETURN_BOOK,
-  };
-};
+  return dispatch => {
+    dispatch(addBorrow());
+    dispatch(removeSelectedBook())
+    dispatch(toggleBorrowDialog());
+  }
+}
 
 export const selectedBook = (index) => {
   return {
@@ -38,14 +74,25 @@ export const selectedBorrow = (index) => {
   };
 };
 
-export const removeDialog = () => {
+const toggleBorrowDialog = () => {
   return {
-    type: actionTypes.REMOVE_DIALOG,
+    type: actionTypes.TOGGLE_BORROW_DIALOG,
+  };
+};
+const toggleReturnDialog = () => {
+  return {
+    type: actionTypes.TOGGLE_RETURN_DIALOG,
   };
 };
 
 export const sortBorrow = () => {
   return {
     type: actionTypes.SORT_BORROW
+  }
+}
+
+export const sortBook = () => {
+  return {
+    type: actionTypes.SORT_BOOK
   }
 }

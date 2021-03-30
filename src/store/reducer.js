@@ -55,7 +55,7 @@ const sortBorrow = (state, action) => {
 //         showBorrowDialog: false
 //       }
 // }
-const removeBorrow = (state, action) => {
+const removeSelectedBorrow = (state, action) => {
   const updatedBorrow = state.borrowed.filter((_, ind) => state.selectedBook !== ind)
   return {
     ...state,
@@ -63,14 +63,7 @@ const removeBorrow = (state, action) => {
   }
 }
 
-const addBorrow = (state, action) => {
-  return{
-    ...state,
-    borrowed: [...state.borrowed, state.books[state.selectedBook]]
-  }
-}
-
-const removeBook = (state, action) => {
+const removeSelectedBook = (state, action) => {
   const updatedBooks = state.books.filter((_, ind)=> state.selectedBook !== ind)
   return {
     ...state,
@@ -85,8 +78,15 @@ const addReturnBook = (state, action) => {
   }
 }
 
+
+const addBorrow = (state, action) => {
+  return{
+    ...state,
+    borrowed: [...state.borrowed, state.books[state.selectedBook]]
+  }
+}
 // const returnBook = (state, action) => {
-//   const updateBorrowed = state.borrowed.filter((_, ind) => state.selectedBook !== ind)
+  //   const updateBorrowed = state.borrowed.filter((_, ind) => state.selectedBook !== ind)
 //       return{
 //         ...state,
 //         books: [...state.books, state.borrowed[state.selectedBook]],
@@ -131,9 +131,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SORT_BOOK: return sortBook(state, action)  
     case actionTypes.SORT_BORROW: return sortBorrow(state, action)  
     // case actionTypes.BORROW_BOOK: return borrowBook(state, action)
-    case actionTypes.REMOVE_BOOK: return removeBook(state, action)
+    case actionTypes.REMOVE_SELECTED_BOOK: return removeSelectedBook(state, action)
     case actionTypes.ADD_RETURN_BOOK: return addReturnBook(state, action)
-    case actionTypes.REMOVE_BORROW: return removeBorrow(state, action);
+    case actionTypes.REMOVE_SELECTED_BORROW: return removeSelectedBorrow(state, action);
     case actionTypes.ADD_BORROW: return addBorrow(state, action)
     // case actionTypes.RETURN_BOOK: return returnBook(state, action)
     case actionTypes.SELECTED_BOOK: return selectedBook(state, action)
