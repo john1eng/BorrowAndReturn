@@ -4,23 +4,21 @@
   
 }
 
-.shelf{
+/* .shelf{
   display: grid;
   grid-template-columns: 20px 300px 20px;
   grid-template-rows: 20px 150px 20px;
-  /* grid-gap: 1px; */
   background-image: linear-gradient(to bottom right, rgb(224, 173, 131),rgb(218, 123, 47))
-  /* background-color:brown; */
 }
 .shelf:not(:first-child){
   grid-template-rows: 0px 150px 20px;
-}
+} */
 
-@media only screen and (max-width: 376px){
+/* @media only screen and (max-width: 376px){
   .shelf{
   grid-template-columns: 20px 200px 20px;
   }
-}
+} */
 
 .top{
   grid-column-start: 2;

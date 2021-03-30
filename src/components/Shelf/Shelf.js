@@ -3,29 +3,24 @@ import { connect } from "react-redux";
 import begEndShelf from "./utility";
 import * as types from '../../shared/types'
 import Books from "../Book/Books";
+import {ShelfStyled} from './ShelfStyled.js'
 
 const Shelf = (props) => {
   //styling
   const shelfContainer = styles.shelfContainer;
-  const shelf = styles.shelf;
   const top = styles.top;
   const sideLeft = styles.sideLeft;
   const sideRight = styles.sideRight;
   const bottom = styles.bottom;
   const space = styles.space;
 
-  const styleShelf = {
-    gridTemplateColumns: `20px ${types.shelfSpace}px 20px`,
-    // gridTemplateRows: `20px ${types.shelfHeight}px 20px`
-  }
-  console.log(window.screen.width)
   
   const shelfArr = begEndShelf(props.books);
   let shelfDisplay = [];
 
   for (let i = 0; i < shelfArr.length; i++) {
     shelfDisplay.push(
-      <div key={i} className={shelf} style={styleShelf}>
+      <ShelfStyled key={i} shelfSpace={types.shelfSpace} shelfHeight={types.shelfHeight}>
         <div className={top}></div>
         <div className={sideLeft}></div>
         <div className={space} >
@@ -37,7 +32,7 @@ const Shelf = (props) => {
         </div>
         <div className={sideRight}></div>
         <div className={bottom}></div>
-      </div>
+      </ShelfStyled>
     );
   }
 
