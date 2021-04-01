@@ -1,9 +1,9 @@
 import * as actionTypes from "./actionTypes";
 
 
-export const returnBook = () => {
+export const returnBook = (selectedBorrow) => {
   return dispatch => {
-    dispatch(addReturnBook());
+    dispatch(addReturnBook(selectedBorrow));
     dispatch(removeSelectedBorrow());
     dispatch(toggleReturnDialog());
   }
@@ -12,7 +12,7 @@ export const returnBook = () => {
 export const selectedBorrowProcess = (index) => {
   console.log("selected borrow process")
   return dispatch => {
-    dispatch(selectedBorrow(index));
+    dispatch(selectedBorrowIndex(index));
     dispatch(toggleReturnDialog());
   }
 }
@@ -32,9 +32,9 @@ export const removeBorrowProcess = () => {
   }
 }
 
-const selectedBorrow = (index) => {
+const selectedBorrowIndex = (index) => {
   return {
-    type: actionTypes.SELECTED_BORROW,
+    type: actionTypes.SELECTED_BORROW_INDEX,
     payload: index,
   };
 };
@@ -46,9 +46,10 @@ const toggleReturnDialog = () => {
   };
 };
 
-const addReturnBook = () => {
+const addReturnBook = (selectedBorrow) => {
   return {
     type: actionTypes.ADD_RETURN_BOOK,
+    payload: selectedBorrow
   };
 }
 

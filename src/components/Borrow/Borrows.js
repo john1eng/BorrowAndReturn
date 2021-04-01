@@ -31,7 +31,7 @@ function Borrows(props) {
 
 const mapStateToProps = (state) => {
   return {
-    borrowed: state.borrowed,
+    borrowed: state.borrow.borrowed,
   };
 };
 

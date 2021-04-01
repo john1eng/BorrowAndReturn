@@ -9,21 +9,31 @@ const ReturnOrDiscard = (props) => {
     props.onRemoveBorrow()
   }
 
+  const returnBookHandler = () => {
+    const selectedBorrow = props.borrowed[props.selectedBorrowIndex];
+    props.onBookReturn(selectedBorrow)
+  }
   return (
     <div className={classes.ReturnOrDiscard}>
       <h1>TITLE</h1>
       <div>
-        <button onClick={props.onBookReturn}>Return</button>
+        <button onClick={returnBookHandler}>Return</button>
         <button onClick={removeBookHandler}>Discard</button>
       </div>
     </div>
   )
 }
+const mapStateToProps = state => {
+  return{
+    borrowed: state.borrow.borrowed,
+    selectedBorrowIndex: state.borrow.selectedBorrowIndex
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
-    onBookReturn: () => dispatch(actionCreator.returnBook()),
+    onBookReturn: (selectedBorrow) => dispatch(actionCreator.returnBook(selectedBorrow)),
     onRemoveBorrow: () => dispatch(actionCreator.removeBorrowProcess())
   }
 }
-export default connect(null,mapDispatchToProps)(ReturnOrDiscard);
+export default connect(mapStateToProps, mapDispatchToProps)(ReturnOrDiscard);

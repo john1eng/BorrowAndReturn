@@ -20,9 +20,9 @@ export const sortBook = () => {
   }
 }
 
-export const borrowBook = () => {
+export const borrowBook = (selectedBook) => {
   return async dispatch => {
-    await dispatch(addBorrow());
+    await dispatch(addBorrow(selectedBook));
     await dispatch(removeSelectedBook());
     await dispatch(toggleBorrowDialog());
   }
@@ -31,15 +31,15 @@ export const borrowBook = () => {
 export const selectedBookProcess = (index) => {
   console.log("selected book process")
   return dispatch => {
-    dispatch(selectedBook(index));
+    dispatch(selectedBookIndex(index));
     dispatch(toggleBorrowDialog());
   }
 }
 
-const selectedBook = (index) => {
+const selectedBookIndex = (index) => {
   console.log("selected book:" + index)
   return {
-    type: actionTypes.SELECTED_BOOK,
+    type: actionTypes.SELECTED_BOOK_INDEX,
     payload: index,
   };
 };
@@ -58,8 +58,9 @@ const toggleBorrowDialog = () => {
 };
 
 
-const addBorrow = () => {
+const addBorrow = (selectedBook) => {
   return {
-    type: actionTypes.ADD_BORROW
+    type: actionTypes.ADD_BORROW,
+    payload: selectedBook
   }
 }

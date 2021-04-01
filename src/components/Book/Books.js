@@ -24,8 +24,8 @@ const Books = (props) => {
 
 const mapStateToProps = state => {
   return {
-    books: state.books,
-    selectedBook: state.selectedBook
+    books: state.book.books,
+    selectedBook: state.book.selectedBook
   };
 }
 export default connect(mapStateToProps)(Books);

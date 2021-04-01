@@ -5,11 +5,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux'
-import reducer from './store/reducer';
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import bookReducer from './store/reducers/bookReducer';
+import borrowReducer from './store/reducers/borrowReducer';
 import thunk from 'redux-thunk'
 
-const store = createStore(reducer, applyMiddleware(thunk))
+const rootReducer = combineReducers({
+  book: bookReducer, 
+  borrow: borrowReducer})
+
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
     <React.StrictMode>
