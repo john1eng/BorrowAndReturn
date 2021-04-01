@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import classes from "./Borrows.module.css";
 
 import Borrow from "./Borrow";
-import * as actionCreator from '../../store/actions/books'
+import * as actionCreator from '../../store/actions/borrow'
 import tableSVG from "../../assets/table.svg";
 
 function Borrows(props) {

@@ -42,8 +42,8 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    showBorrowDialog: state.showBorrowDialog,
-    showReturnDialog: state.showReturnDialog,
+    showBorrowDialog: state.dialog.showBorrow,
+    showReturnDialog: state.dialog.showReturn,
   };
 };
 export default connect(mapStateToProps)(App);

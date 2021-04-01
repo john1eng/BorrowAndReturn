@@ -1,12 +1,12 @@
 import React from 'react'
 import classes from './BorrowOrDiscard.module.css'
 import { connect } from 'react-redux'
-import * as actionCreator from '../../store/actions/books'
+import * as actionCreator from '../../store/actions/book'
 
 const BorrowOrDiscard = (props) => {
   
-  const discardBookHandler = () => {
-    props.onDiscardBook()
+  const removeBookHandler = () => {
+    props.onRemoveBook()
   }
 
   return (
@@ -14,7 +14,7 @@ const BorrowOrDiscard = (props) => {
       <h1>TITLE</h1>
       <div>
         <button onClick={props.onBookBorrowed}>Borrow</button>
-        <button onClick={discardBookHandler}>Discard</button>
+        <button onClick={removeBookHandler}>Discard</button>
       </div>
     </div>
   )
@@ -23,7 +23,7 @@ const BorrowOrDiscard = (props) => {
 const mapDispatchToProps = dispatch => {
   return {
     onBookBorrowed: () => dispatch(actionCreator.borrowBook()),
-    onDiscardBook: () => dispatch(actionCreator.discardBook())
+    onRemoveBook: () => dispatch(actionCreator.removeBookProcess())
     // onBookRemoved: (index) => dispatch(actionCreator.removeBook(index))
   }
 }

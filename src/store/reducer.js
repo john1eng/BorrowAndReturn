@@ -64,6 +64,7 @@ const removeSelectedBorrow = (state, action) => {
 }
 
 const removeSelectedBook = (state, action) => {
+  console.log(state.selectedBook)
   const updatedBooks = state.books.filter((_, ind)=> state.selectedBook !== ind)
   return {
     ...state,
@@ -123,6 +124,16 @@ const toggleBorrowDialog = (state, action) => {
   }
 }
 
+const removeDialog = (state, action) => {
+  return {
+    ...state,
+    dialog: {
+            showBorrow: false,
+            showReturn: false
+            }
+  }
+}
+
 
 
 const reducer = (state = initialState, action) => {
@@ -140,6 +151,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SELECTED_BORROW: return selectedBorrow(state, action)
     case actionTypes.TOGGLE_RETURN_DIALOG: return toggleReturnDialog(state, action)
     case actionTypes.TOGGLE_BORROW_DIALOG: return toggleBorrowDialog(state, action)
+    case actionTypes.REMOVE_DIALOG: return removeDialog(state, action) 
     default: return state;
   }
 };

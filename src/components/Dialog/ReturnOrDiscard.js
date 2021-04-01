@@ -1,12 +1,12 @@
 import React from 'react'
 import classes from './ReturnOrDiscard.module.css'
 import { connect } from 'react-redux'
-import * as actionCreator from '../../store/actions/books'
+import * as actionCreator from '../../store/actions/borrow'
 
 const ReturnOrDiscard = (props) => {
 
-  const discardBookHandler = () => {
-    props.onDiscardBorrow()
+  const removeBookHandler = () => {
+    props.onRemoveBorrow()
   }
 
   return (
@@ -14,7 +14,7 @@ const ReturnOrDiscard = (props) => {
       <h1>TITLE</h1>
       <div>
         <button onClick={props.onBookReturn}>Return</button>
-        <button onClick={discardBookHandler}>Discard</button>
+        <button onClick={removeBookHandler}>Discard</button>
       </div>
     </div>
   )
@@ -23,7 +23,7 @@ const ReturnOrDiscard = (props) => {
 const mapDispatchToProps = dispatch => {
   return {
     onBookReturn: () => dispatch(actionCreator.returnBook()),
-    onDiscardBorrow: () => dispatch(actionCreator.discardBorrow())
+    onRemoveBorrow: () => dispatch(actionCreator.removeBorrowProcess())
   }
 }
 export default connect(null,mapDispatchToProps)(ReturnOrDiscard);

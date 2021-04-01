@@ -69,7 +69,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onBookAdded: (book) => dispatch({type: actionTypes.ADD_BOOK, payload:book}),
+    onBookAdded: (book) => dispatch({type: actionTypes.ADD_NEW_BOOK, payload:book}),
     onBooksSort: () => dispatch({type: actionTypes.SORT_BOOK})
   }
 }

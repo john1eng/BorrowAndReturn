@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Book.module.css';
-import * as actionCreator from '../../store/actions/books'
+import * as actionCreator from '../../store/actions/book'
 import { connect } from 'react-redux'
 import * as types from '../../shared/types'
 
@@ -27,7 +27,7 @@ const Book = (props) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSelectedBook: (index) => dispatch(actionCreator.selectedBook(index))
+    onSelectedBook: (index) => dispatch(actionCreator.selectedBookProcess(index))
   }
 }
 
