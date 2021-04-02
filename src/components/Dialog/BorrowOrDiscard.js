@@ -3,15 +3,15 @@ import classes from './BorrowOrDiscard.module.css'
 import { connect } from 'react-redux'
 import * as actionCreator from '../../store/actions/book'
 
-const BorrowOrDiscard = (props) => {
+const BorrowOrDiscard = ({onRemoveBook, onBookBorrowed, books, selectedBookIndex}) => {
   
   const removeBookHandler = () => {
-    props.onRemoveBook()
+    onRemoveBook()
   }
 
   const borrowBookHandler = () => {
-    const selectedBook = props.books[props.selectedBookIndex]
-    props.onBookBorrowed(selectedBook)
+    const selectedBook = books[selectedBookIndex]
+    onBookBorrowed(selectedBook)
   }
 
   return (

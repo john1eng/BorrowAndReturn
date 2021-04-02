@@ -4,23 +4,21 @@ import * as actionCreator from '../../store/actions/book'
 import { connect } from 'react-redux'
 import * as types from '../../shared/types'
 
-const Book = (props) => {
+const Book = ({bookAttr, index, onSelectedBook}) => {
   
-  const storeRef = React.useRef("hello");
   const book = styles.book;
 
   let style = {
-    backgroundColor: props.bookAttr.color,
-    height: types.heightSize[props.bookAttr.size]+'px',
-    width: types.pageSize[props.bookAttr.page]+'px'
+    backgroundColor: bookAttr.color,
+    height: types.heightSize[bookAttr.size]+'px',
+    width: types.pageSize[bookAttr.page]+'px'
   }
  
   return(
-    <div  ref={storeRef}
-          className={book} 
+    <div  className={book} 
           style={style} 
-          onClick={()=>props.onSelectedBook(props.index)}>
-      <span>{props.bookAttr.title}</span>
+          onClick={()=>onSelectedBook(index)}>
+      <span>{bookAttr.title}</span>
     </div>
   )
 }

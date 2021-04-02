@@ -3,11 +3,10 @@ import { connect } from "react-redux";
 import classes from "./Borrows.module.css";
 
 import Borrow from "./Borrow";
-import * as actionCreator from '../../store/actions/borrow'
-import tableSVG from "../../assets/table.svg";
+import * as actionCreator from '../../store/actions/borrow';
 
-function Borrows(props) {
-  const borrowBooks = props.borrowed.map((book, i) => (
+function Borrows({borrowed, onSortBorrow}) {
+  const borrowBooks = borrowed.map((book, i) => (
     <Borrow bookAttr={book} index={i} />
   ));
 
@@ -24,7 +23,7 @@ function Borrows(props) {
           <rect x="242" y="14" width="20" height="150" />
 
       </svg>
-      <button className ={classes.sortBorrow_btn} onClick={props.onSortBorrow}>sort</button>
+      <button className ={classes.sortBorrow_btn} onClick={onSortBorrow}>sort</button>
     </div>
   );
 }

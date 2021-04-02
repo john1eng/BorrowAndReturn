@@ -3,8 +3,8 @@ import classes from './Backdrop.module.css';
 import { connect } from 'react-redux'
 import * as actionCreator from '../../../store/actions/shared';
 
-const Backdrop = (props) => (
-    props.show ? <div className={classes.Backdrop} onClick={props.onRemoveDialog}></div> : null
+const Backdrop = ({show, onRemoveDialog}) => (
+    show ? <div className={classes.Backdrop} onClick={onRemoveDialog}></div> : null
    )
 ;
 

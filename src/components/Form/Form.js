@@ -13,7 +13,7 @@ const formfields = [
   {label: 'Size', type: 'text', name: 'size'},
   ]
   
-  const Form = (props) => {
+  const Form = ({onBookAdded, onBooksSort}) => {
   //style
   const formStyle = styles.form
 
@@ -32,7 +32,7 @@ const formfields = [
   ))
 
   const submitBookHandler = (e) => {
-    props.onBookAdded(bookStates)
+    onBookAdded(bookStates)
   }
   
   const randomGenerated = (e) => {
@@ -41,7 +41,7 @@ const formfields = [
     const page = ['S','M','L'];
     const size = ['S','M','L']
     
-    props.onBookAdded({title:title[randomNum(0,6)],
+    onBookAdded({title:title[randomNum(0,6)],
                       color:color[randomNum(0,10)],
                       page:page[randomNum(0,3)],
                       size:size[randomNum(0,3)]})
@@ -55,16 +55,10 @@ const formfields = [
       <div>
         <button className={styles.button} onClick={submitBookHandler}>submit</button>
         <button className={styles.button} onClick={randomGenerated}>random</button>
-        <button className={styles.button} onClick={props.onBooksSort}>sort</button>
+        <button className={styles.button} onClick={onBooksSort}>sort</button>
       </div>
     </>
   )
-}
-
-const mapStateToProps = state => {
-  return {
-    books: state.book.books
-  };
 }
 
 const mapDispatchToProps = dispatch => {
@@ -73,4 +67,4 @@ const mapDispatchToProps = dispatch => {
     onBooksSort: () => dispatch({type: actionTypes.SORT_BOOK})
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default connect(null, mapDispatchToProps)(Form)

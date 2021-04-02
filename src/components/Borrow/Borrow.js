@@ -4,18 +4,18 @@ import classes from './Borrow.module.css'
 import * as types from '../../shared/types'
 import * as actionCreator from '../../store/actions/borrow'
 
-function Borrow(props) {
+function Borrow({bookAttr, index, onSelectedBorrow}) {
   let style = {
-    backgroundColor: props.bookAttr.color,
-    height: types.heightSize[props.bookAttr.size]+'px',
-    width: types.pageSize[props.bookAttr.page]+'px'
+    backgroundColor: bookAttr.color,
+    height: types.heightSize[bookAttr.size]+'px',
+    width: types.pageSize[bookAttr.page]+'px'
   }
 
   return (
     <div  className={classes.Borrow} 
           style={style} 
-          onClick={()=>props.onSelectedBorrow(props.index)}>
-      <span>{props.bookAttr.title}</span>
+          onClick={()=>onSelectedBorrow(index)}>
+      <span>{bookAttr.title}</span>
     </div>
   )
 }

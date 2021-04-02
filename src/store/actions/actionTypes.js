@@ -1,8 +1,6 @@
 export const ADD_NEW_BOOK = "ADD_NEW_BOOK";
 export const SORT_BOOK = "SORT_BOOK";
 export const SORT_BORROW = "SORT_BORROW";
-// export const BORROW_BOOK = "BORROW_BOOK";
-// export const RETURN_BOOK = "RETURN_BOOK";
 export const REMOVE_SELECTED_BOOK = "REMOVE_SELECTED_BOOK";
 export const ADD_RETURN_BOOK = "ADD_RETURN_BOOK";
 export const REMOVE_SELECTED_BORROW = "REMOVE_SELECTED_BORROW"

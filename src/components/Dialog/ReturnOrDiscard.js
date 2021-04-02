@@ -3,15 +3,15 @@ import classes from './ReturnOrDiscard.module.css'
 import { connect } from 'react-redux'
 import * as actionCreator from '../../store/actions/borrow'
 
-const ReturnOrDiscard = (props) => {
+const ReturnOrDiscard = ({onRemoveBorrow, borrowed, selectedBorrowIndex, onBookReturn}) => {
 
   const removeBookHandler = () => {
-    props.onRemoveBorrow()
+    onRemoveBorrow()
   }
 
   const returnBookHandler = () => {
-    const selectedBorrow = props.borrowed[props.selectedBorrowIndex];
-    props.onBookReturn(selectedBorrow)
+    const selectedBorrow = borrowed[selectedBorrowIndex];
+    onBookReturn(selectedBorrow)
   }
   return (
     <div className={classes.ReturnOrDiscard}>

@@ -5,7 +5,7 @@ import * as types from '../../shared/types'
 import Books from "../Book/Books";
 import {ShelfStyled} from './ShelfStyled.js'
 
-const Shelf = (props) => {
+const Shelf = ({books}) => {
   //styling
   const shelfContainer = styles.shelfContainer;
   const top = styles.top;
@@ -15,7 +15,7 @@ const Shelf = (props) => {
   const space = styles.space;
 
   
-  const shelfArr = begEndShelf(props.books);
+  const shelfArr = begEndShelf(books);
   let shelfDisplay = [];
 
   for (let i = 0; i < shelfArr.length; i++) {
@@ -25,7 +25,7 @@ const Shelf = (props) => {
         <div className={sideLeft}></div>
         <div className={space} >
           <Books
-            books={props.books}
+            books={books}
             beg={shelfArr[i].beg}
             end={shelfArr[i].end}
           />

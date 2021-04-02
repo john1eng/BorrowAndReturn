@@ -49,18 +49,7 @@ const toggleBorrowDialog = (state, action) => {
     ...state,
     showBorrowDialog: !state.showBorrowDialog
   }
-}
-
-
-// const removeDialog = (state, action) => {
-//   return {
-//     ...state,
-//     dialog: {
-//             showBorrow: false,
-//             showReturn: false
-//             }
-//   }
-// }
+};
 
 const removeSelectedBook = (state, action) => {
   console.log(state.selectedBookIndex)

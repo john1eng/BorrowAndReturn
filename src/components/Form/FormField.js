@@ -1,23 +1,23 @@
 import React from "react";
 import styles from "./FormField.module.css";
 
-const FormField = (props) => {
+const FormField = ({bookSetState, label, type, name}) => {
   //style
   const formFieldStyle = styles.formField;
 
   const changeFieldHandler = (e) => {
     switch (e.target.name) {
       case "title":
-        props.bookSetState.setTitle(e.target.value);
+        bookSetState.setTitle(e.target.value);
         break;
       case "color":
-        props.bookSetState.setColor(e.target.value);
+        bookSetState.setColor(e.target.value);
         break;
       case "page":
-        props.bookSetState.setPage(e.target.value);
+        bookSetState.setPage(e.target.value);
         break;
       case "size":
-        props.bookSetState.setSize(e.target.value);
+        bookSetState.setSize(e.target.value);
         break;
       default:
     }
@@ -25,21 +25,21 @@ const FormField = (props) => {
 
   let field = (
     <>
-      <label>{props.label}</label>
+      <label>{label}</label>
       <input
-        type={props.type}
-        name={props.name}
+        type={type}
+        name={name}
         onChange={changeFieldHandler}
       />
     </>
   );
 
-  if (props.name === "color") {
+  if (name === "color") {
     field = (
       <>
-        <label>{props.label}</label>
+        <label>{label}</label>
         <select
-          name={props.name}
+          name={name}
           defaultValue="lightblue"
           onChange={changeFieldHandler}
         >
@@ -51,12 +51,12 @@ const FormField = (props) => {
       </>
     );
   }
-  if (props.name === "size" || props.name === "page") {
+  if (name === "size" || name === "page") {
     field = (
       <>
-        <label>{props.label}</label>
+        <label>{label}</label>
         <select
-          name={props.name}
+          name={name}
           defaultValue="M"
           onChange={changeFieldHandler}
         >

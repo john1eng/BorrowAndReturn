@@ -2,17 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./Button.module.css";
 
-function Button(props) {
+function Button({link, exact, click, name}) {
 
   return (
     <div className={classes.ButtonContainer} >
       <Link
-        to={props.link}
-        exact={props.exact}
-        onClick={props.click}
+        to={link}
+        exact={exact}
+        onClick={click}
         >
         <button className={classes.Button} >
-          <span>{props.name}</span>
+          <span>{name}</span>
         </button>
       </Link>
     </div>

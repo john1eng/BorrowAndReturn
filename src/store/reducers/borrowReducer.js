@@ -74,7 +74,6 @@ const borrowReducer = (state = initialState, action) => {
     case actionTypes.SELECTED_BORROW_INDEX: return selectedBorrowIndex(state, action)
     case actionTypes.TOGGLE_RETURN_DIALOG: return toggleReturnDialog(state, action)
     case actionTypes.CLOSE_RETURN_DIALOG: return closeReturnDialog(state, action) 
-    // case actionTypes.REMOVE_DIALOG: return removeDialog(state, action) 
     default: return state;
   }
 };

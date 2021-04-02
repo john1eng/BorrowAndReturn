@@ -3,7 +3,7 @@ import React from "react";
 import Shelf from "../Shelf/Shelf";
 import Form from "../Form/Form";
 
-function Library(props) {
+function Library() {
   return (
     <div className={classes.Library}>
       <h1 className={classes.Title}>LIBRARY</h1>
