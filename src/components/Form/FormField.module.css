@@ -3,11 +3,14 @@
   width:50px;
   font-weight: bold;
   font-size: 1.5rem;
+  letter-spacing: 1.2px;
 }
 
 .formField select, .formField input{
-  border: 1px solid black;
+  border: 3px solid #DA7C31;
+  border-radius: 2px;
   padding: .5rem .5rem;
   width: 15rem;
   margin-bottom: .7rem;
+  letter-spacing: 1.2px;
 }

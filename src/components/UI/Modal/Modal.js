@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './Modal.module.css'
 import Backdrop from '../Backdrop/Backdrop'
 
-const Modal = ({show, children}) => {
-
+const Modal = React.memo(({show, children}) => {
+  console.log("render Model")
   return (
     <>
     <Backdrop show={show}/>
@@ -18,6 +18,6 @@ const Modal = ({show, children}) => {
     </div>
     </>
   )
-}
+});
 
 export default Modal

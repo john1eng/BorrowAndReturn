@@ -1,4 +1,5 @@
 import React from "react";
+import { useMemo } from "react"
 import classes from "./App.module.css";
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from "react-router";
@@ -12,6 +13,7 @@ import Library from "./components/Library/Library";
 
 function App(props) {
 
+  console.log("Render App")
 
   let route = (
     <Switch>
@@ -23,19 +25,26 @@ function App(props) {
   )
 
 
-  
+  let returnModal =  useMemo(()=>{
+      return (
+        <Modal show={props.showReturnDialog}>
+          <ReturnOrDiscard />
+        </Modal>
+      )
+  },[props.showReturnDialog])
+
+  let borrowModal = useMemo(()=>{
+    return(
+      <Modal show={props.showBorrowDialog}><BorrowOrDiscard /></Modal>
+    )
+  }, [props.showBorrowDialog])
+
   return (
     <div className={classes.App_Container}>
       <Header />
-      <Modal show={props.showBorrowDialog}>
-        <BorrowOrDiscard />
-      </Modal>
-      <Modal show={props.showReturnDialog}>
-        <ReturnOrDiscard />
-      </Modal>
-      {/* <Library />
-      <Borrows /> */}
       {route}
+      {props.showBorrowDialog && borrowModal}
+      {props.showReturnDialog && returnModal}
     </div>
   );
 }

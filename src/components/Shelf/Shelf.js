@@ -6,6 +6,7 @@ import Books from "../Book/Books";
 import {ShelfStyled} from './ShelfStyled.js'
 
 const Shelf = ({books}) => {
+  console.log("render shelf")
   //styling
   const shelfContainer = styles.shelfContainer;
   const top = styles.top;

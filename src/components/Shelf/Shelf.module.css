@@ -26,7 +26,8 @@
   grid-row-start: 1;
   grid-row-end: 2;
   /* background-color: brown; */
-  border: none;
+  /* border: none; */
+
 }
 
 .space{

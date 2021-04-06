@@ -3,8 +3,9 @@ import classes from './BorrowOrDiscard.module.css'
 import { connect } from 'react-redux'
 import * as actionCreator from '../../store/actions/book'
 
-const BorrowOrDiscard = ({onRemoveBook, onBookBorrowed, books, selectedBookIndex}) => {
+const BorrowOrDiscard = React.memo(({onRemoveBook, onBookBorrowed, books, selectedBookIndex}) => {
   
+  console.log("Render BorrowOrDiscard Dialog")
   const removeBookHandler = () => {
     onRemoveBook()
   }
@@ -23,7 +24,8 @@ const BorrowOrDiscard = ({onRemoveBook, onBookBorrowed, books, selectedBookIndex
       </div>
     </div>
   )
-}
+});
+
 const mapStateToProps = state => {
   return{
     selectedBookIndex: state.book.selectedBookIndex,

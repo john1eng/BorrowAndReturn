@@ -3,7 +3,8 @@ import React from "react";
 import Shelf from "../Shelf/Shelf";
 import Form from "../Form/Form";
 
-function Library() {
+const Library = React.memo(() => {
+  console.log("render Library")
   return (
     <div className={classes.Library}>
       <h1 className={classes.Title}>LIBRARY</h1>
@@ -11,6 +12,6 @@ function Library() {
       <Form />
     </div>
   );
-}
+})
 
 export default Library;

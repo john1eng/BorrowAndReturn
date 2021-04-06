@@ -14,6 +14,7 @@ const formfields = [
   ]
   
   const Form = ({onBookAdded, onBooksSort}) => {
+    console.log("Render Form")
   //style
   const formStyle = styles.form
 
