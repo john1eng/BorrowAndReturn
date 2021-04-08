@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import styles from './Form.module.css'
 import * as actionTypes from '../../store/actions/actionTypes'
 import {randomNum} from './utility';
@@ -13,8 +13,13 @@ const formfields = [
   {label: 'Size', type: 'text', name: 'size'},
   ]
   
-  const Form = ({onBookAdded, onBooksSort}) => {
+  const Form = () => {
     console.log("Render Form")
+
+    const dispatch = useDispatch();
+
+    const onBookAdded = (book) => dispatch({type: actionTypes.ADD_NEW_BOOK, payload:book});
+    const onBooksSort = () => dispatch({type: actionTypes.SORT_BOOK});
   //style
   const formStyle = styles.form
 
@@ -62,10 +67,4 @@ const formfields = [
   )
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onBookAdded: (book) => dispatch({type: actionTypes.ADD_NEW_BOOK, payload:book}),
-    onBooksSort: () => dispatch({type: actionTypes.SORT_BOOK})
-  }
-}
-export default connect(null, mapDispatchToProps)(Form)
+export default Form

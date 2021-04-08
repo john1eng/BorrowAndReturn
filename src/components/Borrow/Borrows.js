@@ -1,11 +1,19 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import classes from "./Borrows.module.css";
 
 import Borrow from "./Borrow";
 import * as actionCreator from '../../store/actions/borrow';
 
-function Borrows({borrowed, onSortBorrow}) {
+function Borrows() {
+
+  const dispatch = useDispatch();
+
+  const onSortBorrow = ()=> dispatch(actionCreator.sortBorrow());
+
+  const borrowed = useSelector(state => state.borrow.borrowed);
+
+
   const borrowBooks = borrowed.map((book, i) => (
     <Borrow bookAttr={book} index={i} />
   ));
@@ -28,16 +36,4 @@ function Borrows({borrowed, onSortBorrow}) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    borrowed: state.borrow.borrowed,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onSortBorrow: ()=> dispatch(actionCreator.sortBorrow())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Borrows);
+export default Borrows;

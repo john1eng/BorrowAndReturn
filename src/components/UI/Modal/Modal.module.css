@@ -8,5 +8,6 @@
   padding: 16px;
   /* left: 15%; */
   top: 30%;
+  transform: translateY(-100vh);
   transition: all 0.3s ease-out
 }

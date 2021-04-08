@@ -1,8 +1,10 @@
 import styles from './Books.module.css';
 import Book from './Book';
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-const Books = ({end, beg, books}) => {
+const Books = ({end, beg}) => {
+
+  const books = useSelector(state => state.book.books)
   //styling
   const book = styles.books
 
@@ -22,10 +24,5 @@ const Books = ({end, beg, books}) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    books: state.book.books,
-    selectedBook: state.book.selectedBook
-  };
-}
-export default connect(mapStateToProps)(Books);
+
+export default Books;

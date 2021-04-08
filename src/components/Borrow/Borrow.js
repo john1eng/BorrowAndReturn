@@ -1,10 +1,15 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import classes from './Borrow.module.css'
 import * as types from '../../shared/types'
 import * as actionCreator from '../../store/actions/borrow'
 
-function Borrow({bookAttr, index, onSelectedBorrow}) {
+function Borrow({bookAttr, index}) {
+
+  const dispatch = useDispatch();
+
+  const onSelectedBorrow = (index) => dispatch(actionCreator.selectedBorrowProcess(index))
+
   let style = {
     backgroundColor: bookAttr.color,
     height: types.heightSize[bookAttr.size]+'px',
@@ -20,9 +25,4 @@ function Borrow({bookAttr, index, onSelectedBorrow}) {
   )
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSelectedBorrow: (index) => dispatch(actionCreator.selectedBorrowProcess(index))
-  }
-} 
-export default connect(null, mapDispatchToProps)(Borrow)
+export default Borrow

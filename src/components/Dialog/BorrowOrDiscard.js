@@ -1,11 +1,19 @@
 import React from 'react'
 import classes from './BorrowOrDiscard.module.css'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import * as actionCreator from '../../store/actions/book'
 
-const BorrowOrDiscard = React.memo(({onRemoveBook, onBookBorrowed, books, selectedBookIndex}) => {
+const BorrowOrDiscard = React.memo(() => {
   
   console.log("Render BorrowOrDiscard Dialog")
+
+  const dispatch = useDispatch();
+
+  const onBookBorrowed = (selectedBook) => dispatch(actionCreator.borrowBook(selectedBook));
+  const onRemoveBook = () => dispatch(actionCreator.removeBookProcess());
+  const selectedBookIndex = useSelector(state => state.book.selectedBookIndex);
+  const books = useSelector(state => state.book.books);
+  
   const removeBookHandler = () => {
     onRemoveBook()
   }
@@ -26,17 +34,4 @@ const BorrowOrDiscard = React.memo(({onRemoveBook, onBookBorrowed, books, select
   )
 });
 
-const mapStateToProps = state => {
-  return{
-    selectedBookIndex: state.book.selectedBookIndex,
-    books: state.book.books
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    onBookBorrowed: (selectedBook) => dispatch(actionCreator.borrowBook(selectedBook)),
-    onRemoveBook: () => dispatch(actionCreator.removeBookProcess())
-    // onBookRemoved: (index) => dispatch(actionCreator.removeBook(index))
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(BorrowOrDiscard);
+export default BorrowOrDiscard;

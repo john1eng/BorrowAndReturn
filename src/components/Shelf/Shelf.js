@@ -1,13 +1,16 @@
 import styles from "./Shelf.module.css";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import begEndShelf from "./utility";
 import * as types from '../../shared/types'
 import Books from "../Book/Books";
 import {ShelfStyled} from './ShelfStyled.js'
 
-const Shelf = ({books}) => {
+const Shelf = () => {
   console.log("render shelf")
   //styling
+
+  const books = useSelector(state => state.book.books);
+
   const shelfContainer = styles.shelfContainer;
   const top = styles.top;
   const sideLeft = styles.sideLeft;
@@ -40,10 +43,6 @@ const Shelf = ({books}) => {
   return <div className={shelfContainer}>{shelfDisplay}</div>;
 };
 
-const mapStateToProps = (state) => {
-  return {
-    books: state.book.books,
-  };
-};
+    
 
-export default connect(mapStateToProps)(Shelf);
+export default Shelf

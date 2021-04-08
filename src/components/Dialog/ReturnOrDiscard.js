@@ -1,11 +1,20 @@
 import React from 'react'
 import classes from './ReturnOrDiscard.module.css'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import * as actionCreator from '../../store/actions/borrow'
 
-const ReturnOrDiscard = React.memo(({onRemoveBorrow, borrowed, selectedBorrowIndex, onBookReturn}) => {
+const ReturnOrDiscard = React.memo(() => {
 
   console.log("Render ReturnOrDiscard Dialog")
+
+  const dispatch = useDispatch();
+  
+  const onBookReturn = (selectedBorrow) => dispatch(actionCreator.returnBook(selectedBorrow));
+  const onRemoveBorrow = () => dispatch(actionCreator.removeBorrowProcess());
+
+  const borrowed = useSelector(state => state.borrow.borrowed);
+  const selectedBorrowIndex = useSelector(state => state.borrow.selectedBorrowIndex);
+
   const removeBookHandler = () => {
     console.log("removeBookHandler")
     onRemoveBorrow()
@@ -28,17 +37,4 @@ const ReturnOrDiscard = React.memo(({onRemoveBorrow, borrowed, selectedBorrowInd
   )
 });
 
-const mapStateToProps = state => {
-  return{
-    borrowed: state.borrow.borrowed,
-    selectedBorrowIndex: state.borrow.selectedBorrowIndex
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onBookReturn: (selectedBorrow) => dispatch(actionCreator.returnBook(selectedBorrow)),
-    onRemoveBorrow: () => dispatch(actionCreator.removeBorrowProcess())
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(ReturnOrDiscard);
+export default ReturnOrDiscard;

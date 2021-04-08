@@ -1,11 +1,15 @@
 import React from 'react'
 import styles from './Book.module.css';
 import * as actionCreator from '../../store/actions/book'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import * as types from '../../shared/types'
 
-const Book = ({bookAttr, index, onSelectedBook}) => {
-  
+const Book = ({bookAttr, index}) => {
+
+  const dispatch = useDispatch();
+
+  const onSelectedBook = (index) => dispatch(actionCreator.selectedBookProcess(index));
+
   const book = styles.book;
 
   let style = {
@@ -23,10 +27,4 @@ const Book = ({bookAttr, index, onSelectedBook}) => {
   )
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSelectedBook: (index) => dispatch(actionCreator.selectedBookProcess(index))
-  }
-}
-
-export default connect(null,mapDispatchToProps)(Book);
+export default Book;

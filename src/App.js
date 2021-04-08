@@ -1,7 +1,7 @@
 import React from "react";
 import { useMemo } from "react"
 import classes from "./App.module.css";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router";
 
 import Header from "./components/Header/Header"
@@ -15,6 +15,9 @@ function App(props) {
 
   console.log("Render App")
 
+  const showBorrowDialog = useSelector(state => state.book.showBorrowDialog)
+  const showReturnDialog = useSelector(state => state.borrow.showReturnDialog)
+  
   let route = (
     <Switch>
       <Route path="/borrow" render={(props)=><Borrows {...props} />} />
@@ -27,32 +30,26 @@ function App(props) {
 
   let returnModal =  useMemo(()=>{
       return (
-        <Modal show={props.showReturnDialog}>
+        <Modal show={showReturnDialog}>
           <ReturnOrDiscard />
         </Modal>
       )
-  },[props.showReturnDialog])
+  },[showReturnDialog])
 
   let borrowModal = useMemo(()=>{
     return(
-      <Modal show={props.showBorrowDialog}><BorrowOrDiscard /></Modal>
+      <Modal show={showBorrowDialog}><BorrowOrDiscard /></Modal>
     )
-  }, [props.showBorrowDialog])
+  }, [showBorrowDialog])
 
   return (
     <div className={classes.App_Container}>
       <Header />
       {route}
-      {props.showBorrowDialog && borrowModal}
-      {props.showReturnDialog && returnModal}
+      {showBorrowDialog && borrowModal}
+      {showReturnDialog && returnModal}
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    showBorrowDialog: state.book.showBorrowDialog,
-    showReturnDialog: state.borrow.showReturnDialog,
-  };
-};
-export default connect(mapStateToProps)(App);
+export default App;

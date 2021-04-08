@@ -5,6 +5,8 @@ const FormField = ({bookSetState, label, type, name}) => {
   //style
   const formFieldStyle = styles.formField;
 
+  const inputClasses = [styles.input];
+
   const changeFieldHandler = (e) => {
     switch (e.target.name) {
       case "title":
@@ -27,6 +29,7 @@ const FormField = ({bookSetState, label, type, name}) => {
     <>
       <label>{label}</label>
       <input
+        className={inputClasses}
         type={type}
         name={name}
         onChange={changeFieldHandler}
