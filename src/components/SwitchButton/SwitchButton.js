@@ -1,5 +1,4 @@
 import React from 'react'
-import classes from './SwitchButton.module.css'
 import Button from "../UI/Button/Button";
 
 

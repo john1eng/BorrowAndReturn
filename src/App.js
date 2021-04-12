@@ -1,7 +1,7 @@
 import React from "react";
 import { useMemo } from "react"
 import classes from "./App.module.css";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router";
 
 import Header from "./components/Header/Header"

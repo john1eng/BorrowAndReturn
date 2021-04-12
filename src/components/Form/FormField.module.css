@@ -6,6 +6,7 @@
   letter-spacing: 1.2px;
 }
 
+
 .formField select, .formField input{
   border: 3px solid #DA7C31;
   border-radius: 2px;
@@ -17,6 +18,16 @@
 
 .input:focus{
   outline: none !important;
-  border: 1px solid red;
-  box-shadow: 0 0 10px #719ECE
+  border: 3px solid #DAA132;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.select:focus{
+  outline: none !important;
+  border: 3px solid #DAA132;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.Invalid{
+  background-color: #fda49a
 }
