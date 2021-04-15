@@ -13,13 +13,13 @@
 .Borrows {
   /* width:150px; */
   overflow-y: auto;
-  height: 300px;
+  height: 200px;
   /* width:300px; */
   max-width: 300px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  transform: rotate(-90deg) translateX(-15px);
+  transform: rotate(-90deg) translateX(35px);
 }
 .img_container {
   width:270px;

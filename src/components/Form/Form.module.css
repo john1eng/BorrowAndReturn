@@ -11,5 +11,29 @@
   border-radius: 5px;
   font-size: 2rem;
   padding: 1rem 2rem;
+  background-color: #DA7C31;
+  box-shadow: 1px 1px 1px gray;
+  border:none;
+  cursor: pointer;
+  color: rgba(253, 253, 253, .9);
+}
 
+.button:hover:enabled{
+  transform: translateY(-2px);
+  box-shadow: 0 .4rem 1rem rgba(0,0,0,.2);
+}
+
+.button:active, .button:focus{
+  outline:none;
+  transform: translateY(-1px);
+  box-shadow: 0 .2rem .5rem rgba(0,0,0,.2);
+}
+.button:disabled{
+  background-color: transparent;
+  color: gray;
+  
+}
+
+.buttonContainer{
+  display: flex
 }

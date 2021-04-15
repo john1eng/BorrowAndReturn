@@ -3,5 +3,5 @@
 
  let width = window.screen.width
  
- export const shelfSpace = (width>390) ? 375 : 300 ;
+ export const shelfSpace = (width>475) ? 375 : 300 ;
  export const shelfHeight = 150;

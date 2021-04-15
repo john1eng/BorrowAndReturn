@@ -16,9 +16,9 @@ function SwitchButton() {
   const button = <Button name={buttonProp.name} disabled={true} link={buttonProp.link} click={()=>changeBtn(btnProp.name)} /> 
   
   return (
-    <div>
+    <>
       {button}
-    </div>
+    </>
   )
 }
 

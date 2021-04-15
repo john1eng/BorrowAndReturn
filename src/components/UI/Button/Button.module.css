@@ -3,25 +3,15 @@
 }
 
 .Button {
-  padding: 1rem 2.5rem;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px gray;
-  background: linear-gradient(to right bottom, #f69d3c, #d83236);
+  letter-spacing: 1.4px;
+  background:  transparent;
+  border:none;
   /* background-color:#D83236; */
   cursor: pointer;
-  color: rgb(0, 0, 0, 0.7);
+  color: rgba(253, 253, 253, .9);
 }
-
-.Button:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
-}
-
-.Button:active, .Button:focus {
-  outline: none;
-  transform: translateY(-1px);
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+.Button:focus, .Button:active{
+  outline:none;
 }

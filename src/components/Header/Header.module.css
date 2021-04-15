@@ -9,11 +9,28 @@
 }
 
 .Title{
-  align-self:center;
+  /* align-self:center; */
+  width:60%;
   font-size: 2rem;
   margin-left: 2rem;
 }
 
 .Button_Container{
-  margin-right:2rem;
+  /* display:inline-block; */
+  background-color: #DA7C31;
+  height:100%;
+  width:40%;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Button_Container div, .Button_Container a, .Button_Container button{
+width:100%;
+height:100%;
+display: inline-block;
+}
+.Button_Container:hover{
+  filter: brightness(80%)
 }

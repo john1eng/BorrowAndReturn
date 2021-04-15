@@ -2,10 +2,10 @@
   font-family: "Montserrat", sans-serif;
   /* margin: 6rem auto; */
   min-width: 50rem;
-  height: 100vh;
+  min-height:100vh;
   display: flex;
   flex-direction: column;
-  justify-content:flex-start;
+  /* justify-content:space-between; */
   align-items: center;
   background: url("../src/assets/white-waves/white-waves/white-waves.png");
   position: relative;
