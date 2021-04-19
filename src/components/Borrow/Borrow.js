@@ -5,7 +5,7 @@ import * as types from '../../shared/types'
 import * as actionCreator from '../../store/actions/borrow'
 
 function Borrow({bookAttr, index}) {
-
+  console.log("render borrow")
   const dispatch = useDispatch();
 
   const onSelectedBorrow = (index) => dispatch(actionCreator.selectedBorrowProcess(index))

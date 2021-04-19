@@ -6,7 +6,7 @@ import Borrow from "./Borrow";
 import * as actionCreator from '../../store/actions/borrow';
 
 function Borrows() {
-
+  console.log('render borrows')
   const dispatch = useDispatch();
 
   const onSortBorrow = ()=> dispatch(actionCreator.sortBorrow());
