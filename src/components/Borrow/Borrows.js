@@ -7,16 +7,22 @@ import * as actionCreator from '../../store/actions/borrow';
 
 function Borrows() {
   console.log('render borrows')
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const onSortBorrow = ()=> dispatch(actionCreator.sortBorrow());
 
   const borrowed = useSelector(state => state.borrow.borrowed);
 
-
   const borrowBooks = borrowed.map((book, i) => (
     <Borrow bookAttr={book} index={i} />
   ));
+
+  const table = 
+  <svg className={classes.img_container}>
+    <rect x="0" y="0" width="270" height="15" />
+    <rect x="8" y="14" width="20" height="150" />
+    <rect x="242" y="14" width="20" height="150" />
+  </svg>
 
   return (
     <div className={classes.Borrow_container}>
@@ -24,13 +30,7 @@ function Borrows() {
       <div className={classes.Borrows}>
         {borrowBooks}
       </div>
-      <svg className={classes.img_container}>
-        {/* <image className={classes.img} href={tableSVG} alt="table" /> */}
-        <rect x="0" y="0" width="270" height="15" />
-          <rect x="8" y="14" width="20" height="150" />
-          <rect x="242" y="14" width="20" height="150" />
-
-      </svg>
+      {table}
       <button className ={classes.sortBorrow_btn} onClick={onSortBorrow}>sort</button>
     </div>
   );

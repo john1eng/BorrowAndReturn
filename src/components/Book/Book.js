@@ -6,10 +6,6 @@ import * as types from '../../shared/types'
 
 const Book = ({bookAttr, index}) => {
 
-  const dispatch = useDispatch();
-
-  const onSelectedBook = (index) => dispatch(actionCreator.selectedBookProcess(index));
-
   const book = styles.book;
 
   let style = {
@@ -17,6 +13,12 @@ const Book = ({bookAttr, index}) => {
     height: types.heightSize[bookAttr.size]+'px',
     width: types.pageSize[bookAttr.page]+'px'
   }
+  
+  const dispatch = useDispatch();
+
+  const onSelectedBook = (index) => dispatch(actionCreator.selectedBookProcess(index));
+
+
  
   return(
     <div  className={book} 

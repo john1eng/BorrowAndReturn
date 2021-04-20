@@ -1,21 +1,21 @@
 .form{
+  margin-top: 40px;
   display:flex;
   flex-direction: column;
-  margin-top: 40px;
   align-items: flex-start;
 }
 
 .button{
-  margin:9px;
-  margin-top: 20px;
+  background-color: #DA7C31;
+  color: rgba(253, 253, 253, .9);
+  box-shadow: 1px 1px 1px gray;
+  border:none;
   border-radius: 5px;
   font-size: 2rem;
   padding: 1rem 2rem;
-  background-color: #DA7C31;
-  box-shadow: 1px 1px 1px gray;
-  border:none;
   cursor: pointer;
-  color: rgba(253, 253, 253, .9);
+  margin:9px;
+  margin-top: 20px;
 }
 
 .button:hover:enabled{

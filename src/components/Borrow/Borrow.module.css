@@ -2,26 +2,23 @@
   width: 25px;
   height: 100px;
   background-color: lightblue;
+  opacity: 1;
   border: 1px solid black;
   border-radius: 4px;
-  opacity: 1;
   transition: opacity 1s linear;
+  cursor: pointer;
   display:flex;
   justify-content: center;
   align-items: flex-start;
-  cursor: pointer;
 }
 
 .Borrow span{
-  display:block;
-  white-space: nowrap;
-  font-size: 1rem;
   padding-top:4px;
   writing-mode:vertical-lr;
-  /* cursor: pointer; */
-  /* transform: translateX(40%) rotate(90deg);
-  transform-origin: bottom left; */
+  font-size: 1rem;
+  white-space: nowrap;
   letter-spacing: 1.5px;
   font-weight:800;
   text-transform: uppercase;
+  display:block;
 }

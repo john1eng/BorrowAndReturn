@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux'
 
 const Books = ({end, beg}) => {
 
-  const books = useSelector(state => state.book.books)
   //styling
   const book = styles.books
+
+  const books = useSelector(state => state.book.books)
 
   let booksInShelf =[]
   

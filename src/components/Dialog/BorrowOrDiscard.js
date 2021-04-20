@@ -8,9 +8,9 @@ const BorrowOrDiscard = React.memo(() => {
   console.log("Render BorrowOrDiscard Dialog")
 
   const dispatch = useDispatch();
-
   const onBookBorrowed = (selectedBook) => dispatch(actionCreator.borrowBook(selectedBook));
   const onRemoveBook = () => dispatch(actionCreator.removeBookProcess());
+  
   const selectedBookIndex = useSelector(state => state.book.selectedBookIndex);
   const books = useSelector(state => state.book.books);
   

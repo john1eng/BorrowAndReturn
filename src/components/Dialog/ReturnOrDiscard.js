@@ -8,7 +8,6 @@ const ReturnOrDiscard = React.memo(() => {
   console.log("Render ReturnOrDiscard Dialog")
 
   const dispatch = useDispatch();
-  
   const onBookReturn = (selectedBorrow) => dispatch(actionCreator.returnBook(selectedBorrow));
   const onRemoveBorrow = () => dispatch(actionCreator.removeBorrowProcess());
 

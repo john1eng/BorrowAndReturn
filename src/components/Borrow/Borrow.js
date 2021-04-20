@@ -1,20 +1,21 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import classes from './Borrow.module.css'
+import { useDispatch } from 'react-redux'
 import * as types from '../../shared/types'
 import * as actionCreator from '../../store/actions/borrow'
 
 function Borrow({bookAttr, index}) {
   console.log("render borrow")
-  const dispatch = useDispatch();
-
-  const onSelectedBorrow = (index) => dispatch(actionCreator.selectedBorrowProcess(index))
-
   let style = {
     backgroundColor: bookAttr.color,
     height: types.heightSize[bookAttr.size]+'px',
     width: types.pageSize[bookAttr.page]+'px'
   }
+  
+  const dispatch = useDispatch();
+
+  const onSelectedBorrow = (index) => dispatch(actionCreator.selectedBorrowProcess(index))
+
 
   return (
     <div  className={classes.Borrow} 

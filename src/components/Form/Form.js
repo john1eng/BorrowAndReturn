@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Form.module.css";
 import * as actionTypes from "../../store/actions/actionTypes";
-import { randomNum } from "./utility";
+import { randomNum, checkValidity, title, color, page, size } from "./utility";
 
 import FormField from "./FormField";
 
 const Form = () => {
   console.log("Render Form");
+  
+  //style
+  const formStyle = styles.form;
 
   const dispatch = useDispatch();
-
   const onBookAdded = (book) =>
     dispatch({ type: actionTypes.ADD_NEW_BOOK, payload: book });
+
   const onBooksSort = () => dispatch({ type: actionTypes.SORT_BOOK });
 
   const [bookForm, setBookForm] = useState({
@@ -63,13 +66,6 @@ const Form = () => {
       valid: true,
     },
   });
-  //style
-  const formStyle = styles.form;
-
-  const checkValidity = (value, validation) => {
-    if (value.length > 0) return true;
-    else return false;
-  };
 
   const [formIsValid, setFormIsValid] = useState(false);
 
@@ -122,43 +118,21 @@ const Form = () => {
   ));
 
   const submitBookHandler = (e) => {
-    const title = bookForm["Title"].value;
-    const color = bookForm["Color"].value;
-    const page = bookForm["Page"].value;
-    const size = bookForm["Size"].value;
+    const [title, color, page, size] = ['Title', 'Color', 'Page', 'Size'].map((attr)=>bookForm[attr].value);
+    // const color = bookForm["Color"].value;
+    // const page = bookForm["Page"].value;
+    // const size = bookForm["Size"].value;
 
     onBookAdded({ title, color, page, size });
   };
 
-  const randomGenerated = (e) => {
-    const title = [
-      "George",
-      "Americanah",
-      "Angelmaker",
-      "Annabel",
-      "Annihilation",
-      "Away",
-    ];
-    const color = [
-      "lightblue",
-      "lightgreen",
-      "pink",
-      "orange",
-      "gray",
-      "lightpurple",
-      "red",
-      "white",
-      "yellow",
-      "brown",
-    ];
-    const page = ["S", "M", "L"];
-    const size = ["S", "M", "L"];
-
+  const randomGenerated = () => {
+    const [RandomTitle, RandomColor, RandomPage, RandomSize] = [title, color, page, size].map(data=>data[randomNum(0, data.length)])
     onBookAdded({
-      title: title[randomNum(0, 6)],
-      color: color[randomNum(0, 10)],
-      page: page[randomNum(0, 3)],
-      size: size[randomNum(0, 3)],
+      title: RandomTitle,
+      color: RandomColor,
+      page: RandomPage,
+      size: RandomSize
     });
   };
 
