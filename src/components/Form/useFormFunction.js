@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import * as actionCreator from '../../store/actions/book'
 import { randomNum, title, color, page, size } from "./utility";
 

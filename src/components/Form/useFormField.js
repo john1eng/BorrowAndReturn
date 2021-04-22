@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux'
-import * as actionCreator from '../../store/actions/book'
+
 import {useState} from 'react'
-import { randomNum, checkValidity, title, color, page, size } from "./utility";
+import {checkValidity} from "./utility";
 
 const initialState = {
   Title: {

@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import styles from "./Form.module.css";
-import * as actionTypes from "../../store/actions/actionTypes";
-import { randomNum, checkValidity, title, color, page, size } from "./utility";
-
 import FormField from "./FormField";
 import { useFormFunction } from "./useFormFunction";
 import { useFormField } from "./useFormField";
