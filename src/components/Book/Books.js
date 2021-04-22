@@ -12,9 +12,9 @@ const Books = ({end, beg}) => {
   let booksInShelf =[]
   
   //not the best system to identify there are more books in the shelf then one
-  let chooseNum = ((end-beg) === 1) ? books.length : end 
+  let numOfBook = ((end-beg) === 1) ? books.length : end 
 
-  for(let i = beg; i < chooseNum; i++){
+  for(let i = beg; i < numOfBook; i++){
     booksInShelf.push(<Book key={i} bookAttr={books[i]} index={i} />)
   }
   

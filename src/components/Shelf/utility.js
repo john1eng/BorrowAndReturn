@@ -1,6 +1,6 @@
 import * as types from '../../shared/types'
 
-//find number of shelf and each shelf contain from beg book index to end book index 
+//find number of shelf and each shelf is an object contain from beg book index to end book index 
 // ex [{beg:0, end:5},{beg:5, end:10}]
   
   const begEndShelf = (books) => {

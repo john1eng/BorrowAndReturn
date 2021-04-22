@@ -13,6 +13,7 @@ function SwitchButton() {
     const isMatch = 'LIBRARY' === name;
     isMatch ? setButtonProp({name:'BORROWED', link:'/borrow'}) : setButtonProp({name:'LIBRARY', link:'/library'})
   }
+  
   const button = <Button name={buttonProp.name} disabled={true} link={buttonProp.link} click={()=>changeBtn(btnProp.name)} /> 
   
   return (

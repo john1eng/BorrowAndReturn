@@ -1,18 +1,12 @@
 import React from 'react'
 import classes from './BorrowOrDiscard.module.css'
-import { useSelector, useDispatch } from 'react-redux'
-import * as actionCreator from '../../store/actions/book'
+import { useBorrowOrDiscardState } from './useBorrowOrDiscardState';
 
 const BorrowOrDiscard = React.memo(() => {
   
   console.log("Render BorrowOrDiscard Dialog")
 
-  const dispatch = useDispatch();
-  const onBookBorrowed = (selectedBook) => dispatch(actionCreator.borrowBook(selectedBook));
-  const onRemoveBook = () => dispatch(actionCreator.removeBookProcess());
-  
-  const selectedBookIndex = useSelector(state => state.book.selectedBookIndex);
-  const books = useSelector(state => state.book.books);
+  const {onBookBorrowed, onRemoveBook, selectedBookIndex, books} = useBorrowOrDiscardState();
   
   const removeBookHandler = () => {
     onRemoveBook()

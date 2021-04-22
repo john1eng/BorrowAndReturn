@@ -54,17 +54,6 @@ const closeReturnDialog = (state, action)  => {
     showReturnDialog: false
   }
 }
-// const removeDialog = (state, action) => {
-//   return {
-//     ...state,
-//     dialog: {
-//             showBorrow: false,
-//             showReturn: false
-//             }
-//   }
-// }
-
-
 
 const borrowReducer = (state = initialState, action) => {
   switch(action.type){

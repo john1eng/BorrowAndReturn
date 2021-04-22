@@ -59,13 +59,9 @@ const FormField = ({name, elementType, elementConfig, value, invalid, shouldVali
   }
 
   const display = new Map([['input', inputDisplay], ['select', selectDisplay]])
-  console.log(elementType);
-    inputElement = display.get(elementType)[name] || display.get(elementType)
-  // if(elementType==='input'){
-  //   inputElement = display[elementType]
-  // }
 
-  console.log(inputElement)
+  inputElement = display.get(elementType)[name] || display.get(elementType)
+ 
 
   // switch(elementType){
   //   case('input'):

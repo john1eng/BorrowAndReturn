@@ -1,37 +1,36 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+
 import classes from "./Borrows.module.css";
 
 import Borrow from "./Borrow";
-import * as actionCreator from '../../store/actions/borrow';
+import {useBorrowState} from './useBorrowState';
+
+const tableSVG = 
+<svg className={classes.img_container}>
+  <rect x="0" y="0" width="270" height="15" />
+  <rect x="8" y="14" width="20" height="150" />
+  <rect x="242" y="14" width="20" height="150" />
+</svg>
 
 function Borrows() {
   console.log('render borrows')
 
-  const dispatch = useDispatch();
-  const onSortBorrow = ()=> dispatch(actionCreator.sortBorrow());
+  const {onSortBorrow, borrowed} = useBorrowState();
 
-  const borrowed = useSelector(state => state.borrow.borrowed);
+  const sortHandler = () => onSortBorrow();
 
-  const borrowBooks = borrowed.map((book, i) => (
+  const borrowedBooks = borrowed.map((book, i) => (
     <Borrow bookAttr={book} index={i} />
   ));
-
-  const table = 
-  <svg className={classes.img_container}>
-    <rect x="0" y="0" width="270" height="15" />
-    <rect x="8" y="14" width="20" height="150" />
-    <rect x="242" y="14" width="20" height="150" />
-  </svg>
 
   return (
     <div className={classes.Borrow_container}>
       <h1 className={classes.Title}>Borrowed</h1>
       <div className={classes.Borrows}>
-        {borrowBooks}
+        {borrowedBooks}
       </div>
-      {table}
-      <button className ={classes.sortBorrow_btn} onClick={onSortBorrow}>sort</button>
+      {tableSVG}
+      <button className ={classes.sortBorrow_btn} onClick={sortHandler}>sort</button>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 .Library{
+  padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 5rem;
 }
 
 .Title{

@@ -1,29 +1,27 @@
 .Header{
   width: 100%;
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
   height: 7rem;
   background-color: #daa132;
   margin-bottom: 4rem;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .Title{
-  /* align-self:center; */
   width:60%;
   font-size: 2rem;
   margin-left: 2rem;
 }
 
 .Button_Container{
-  /* display:inline-block; */
   background-color: #DA7C31;
   height:100%;
   width:40%;
+  cursor: pointer;
   display:flex;
   justify-content:center;
   align-items: center;
-  cursor: pointer;
 }
 
 .Button_Container div, .Button_Container a, .Button_Container button{

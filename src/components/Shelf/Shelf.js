@@ -11,19 +11,21 @@ const Shelf = () => {
 
   const books = useSelector(state => state.book.books);
 
-  const shelfContainer = styles.shelfContainer;
-  const top = styles.top;
-  const sideLeft = styles.sideLeft;
-  const sideRight = styles.sideRight;
-  const bottom = styles.bottom;
-  const space = styles.space;
-
+  // const shelfContainer = styles.shelfContainer;
+  // const top = styles.top;
+  // const sideLeft = styles.sideLeft;
+  // const sideRight = styles.sideRight;
+  // const bottom = styles.bottom;
+  // const space = styles.space;
+  const styleArr = ['shelfContainer', 'top', 'sideLeft', 'sideRight', 'bottom', 'space'];
+  const [shelfContainer, top, sideLeft, sideRight, bottom, space] = [...styleArr].map((x)=>styles[x])
+  
+  let shelfWithBooks = [];
   
   const shelfArr = begEndShelf(books);
-  let shelfDisplay = [];
 
   for (let i = 0; i < shelfArr.length; i++) {
-    shelfDisplay.push(
+    shelfWithBooks.push(
       <ShelfStyled key={i} shelfSpace={types.shelfSpace} shelfHeight={types.shelfHeight}>
         <div className={top}></div>
         <div className={sideLeft}></div>
@@ -40,7 +42,7 @@ const Shelf = () => {
     );
   }
 
-  return <div className={shelfContainer}>{shelfDisplay}</div>;
+  return <div className={shelfContainer}>{shelfWithBooks}</div>;
 };
 
     
