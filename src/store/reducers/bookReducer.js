@@ -23,7 +23,7 @@ const addNewBook = (state, action) => {
 
 const sortBook = (state, action) => {
   let copyOfBooks = JSON.parse(JSON.stringify(state.books))
-      copyOfBooks.sort((a,b) =>  types.heightSize[b.size] - types.heightSize[a.size])
+      copyOfBooks.sort((a,b) =>  types.bookHeightSize[b.size] - types.bookHeightSize[a.size])
       return {
         ...state,
         books: copyOfBooks

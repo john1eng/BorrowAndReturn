@@ -1,12 +1,12 @@
 import React from 'react'
 import classes from './ReturnOrDiscard.module.css'
-import { useReturnOrDiscardState } from './useReturnOrDiscardState';
+import { useReturnOrDiscard } from './useReturnOrDiscard';
 
 const ReturnOrDiscard = React.memo(() => {
 
   console.log("Render ReturnOrDiscard Dialog")
 
-  const {onBookReturn, onRemoveBorrow,  borrowed, selectedBorrowIndex} = useReturnOrDiscardState()
+  const {onBookReturn, onRemoveBorrow,  borrowed, selectedBorrowIndex} = useReturnOrDiscard()
 
   const removeBookHandler = () => {
     console.log("removeBookHandler")

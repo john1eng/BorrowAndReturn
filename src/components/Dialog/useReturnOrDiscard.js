@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import * as actionCreator from '../../store/actions/borrow'
 
-export const useReturnOrDiscardState = () => {
+export const useReturnOrDiscard = () => {
 
   const dispatch = useDispatch();
   const onBookReturn = (selectedBorrow) => dispatch(actionCreator.returnBook(selectedBorrow));

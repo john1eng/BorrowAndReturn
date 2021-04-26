@@ -13,7 +13,6 @@ const Form = () => {
   const {bookForm, formIsValid, fieldChangedHandler} = useFormField();
   const {onBooksSort, submitBookHandler, randomGenerated} = useFormFunction();
 
-
   // convert bookForm into array
   const formElementsArray = [];
   for (let key in bookForm) {

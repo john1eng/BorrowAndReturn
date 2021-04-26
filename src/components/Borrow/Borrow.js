@@ -2,18 +2,18 @@ import React from 'react'
 import classes from './Borrow.module.css'
 
 import * as types from '../../shared/types'
-import { useBorrowState } from './useBorrowState'
+import { useBorrow } from './useBorrow'
 
 
 function Borrow({bookAttr, index}) {
   console.log("render borrow")
   let style = {
     backgroundColor: bookAttr.color,
-    height: types.heightSize[bookAttr.size]+'px',
-    width: types.pageSize[bookAttr.page]+'px'
+    height: types.bookHeightSize[bookAttr.size]+'px',
+    width: types.bookPageSize[bookAttr.page]+'px'
   }
   
-  const {onSelectedBorrow} = useBorrowState();
+  const {onSelectedBorrow} = useBorrow();
 
   return (
     <div  className={classes.Borrow} 

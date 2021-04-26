@@ -1,13 +1,13 @@
 import styles from './Books.module.css';
 import Book from './Book';
-import { useSelector } from 'react-redux'
+import { useBook } from './useBook';
 
 const Books = ({end, beg}) => {
 
   //styling
   const book = styles.books
 
-  const books = useSelector(state => state.book.books)
+  const {books} = useBook();
 
   let booksInShelf =[]
   

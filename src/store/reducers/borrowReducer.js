@@ -12,7 +12,7 @@ const sortBorrow = (state, action) => {
   console.log(state.borrowed)
   console.log("hello")
   let copyOfBorrow = JSON.parse(JSON.stringify(state.borrowed))
-      copyOfBorrow.sort((a,b) =>  types.heightSize[b.size] - types.heightSize[a.size])
+      copyOfBorrow.sort((a,b) =>  types.bookHeightSize[b.size] - types.bookHeightSize[a.size])
       return {
         ...state,
         borrowed: copyOfBorrow

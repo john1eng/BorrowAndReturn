@@ -2,16 +2,21 @@ import React from 'react'
 import Button from "../UI/Button/Button";
 
 
-function SwitchButton() {
 
+function SwitchButton() {
+  const borrowObj = {name:'BORROWED', link:'/borrow'} 
+  const libraryObj = {name:'LIBRARY', link:'/library'}
+  
   const pathname = window.location.pathname;
   const isMatchLibraryPathname = ['/library', '/'].some((d)=> d===pathname);
-  const btnProp = (isMatchLibraryPathname) ? {name:'BORROWED', link:'/borrow'} : {name:'LIBRARY', link:'/library'}
+  
+  const btnProp = (isMatchLibraryPathname) ? borrowObj: libraryObj
   const [buttonProp, setButtonProp] = React.useState(btnProp)
+  
   
   const changeBtn = (name) =>{
     const isMatch = 'LIBRARY' === name;
-    isMatch ? setButtonProp({name:'BORROWED', link:'/borrow'}) : setButtonProp({name:'LIBRARY', link:'/library'})
+    isMatch ? setButtonProp(borrowObj) : setButtonProp(libraryObj)
   }
   
   const button = <Button name={buttonProp.name} disabled={true} link={buttonProp.link} click={()=>changeBtn(btnProp.name)} /> 

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import * as actionCreator from '../../store/actions/borrow'
 
-export const useBorrowState = () => {
+export const useBorrow = () => {
 
   const dispatch = useDispatch();
 

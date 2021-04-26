@@ -1,6 +1,6 @@
 import styles from "./Shelf.module.css";
 import { useSelector } from "react-redux";
-import begEndShelf from "./utility";
+import { begEndShelf } from "./utility";
 import * as types from '../../shared/types'
 import Books from "../Book/Books";
 import {ShelfStyled} from './ShelfStyled.js'
@@ -26,7 +26,7 @@ const Shelf = () => {
 
   for (let i = 0; i < shelfArr.length; i++) {
     shelfWithBooks.push(
-      <ShelfStyled key={i} shelfSpace={types.shelfSpace} shelfHeight={types.shelfHeight}>
+      <ShelfStyled key={i} shelfSpace={types.shelfSpace.width} shelfHeight={types.shelfSpace.height}>
         <div className={top}></div>
         <div className={sideLeft}></div>
         <div className={space} >

@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./Borrows.module.css";
 
 import Borrow from "./Borrow";
-import {useBorrowState} from './useBorrowState';
+import {useBorrow} from './useBorrow';
 
 const tableSVG = 
 <svg className={classes.img_container}>
@@ -15,7 +15,7 @@ const tableSVG =
 function Borrows() {
   console.log('render borrows')
 
-  const {onSortBorrow, borrowed} = useBorrowState();
+  const {onSortBorrow, borrowed} = useBorrow();
 
   const sortHandler = () => onSortBorrow();
 
