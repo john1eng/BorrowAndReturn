@@ -4,7 +4,7 @@ import * as types from '../../shared/types'
 const initialState = {
   borrowed: [{color:'lightblue', page:'M', size:'L', title:'hunter'},
             {color:'lightgreen', page:'M', size:'L', title:'baker'}],
-  showReturnDialog: false,
+  // showReturnDialog: false,
   selectedBorrowIndex: null,
 };
 
@@ -41,19 +41,19 @@ const selectedBorrowIndex = (state, action) => {
   }
 }
 
-const toggleReturnDialog = (state, action) => {
-  return {
-    ...state,
-    showReturnDialog: !state.showReturnDialog
-  }
-}
+// const toggleReturnDialog = (state, action) => {
+//   return {
+//     ...state,
+//     showReturnDialog: !state.showReturnDialog
+//   }
+// }
 
-const closeReturnDialog = (state, action)  => {
-  return {
-    ...state,
-    showReturnDialog: false
-  }
-}
+// const closeReturnDialog = (state, action)  => {
+//   return {
+//     ...state,
+//     showReturnDialog: false
+//   }
+// }
 
 const borrowReducer = (state = initialState, action) => {
   switch(action.type){
@@ -61,8 +61,8 @@ const borrowReducer = (state = initialState, action) => {
     case actionTypes.ADD_BORROW: return addBorrow(state, action)
     case actionTypes.SORT_BORROW: return sortBorrow(state, action)  
     case actionTypes.SELECTED_BORROW_INDEX: return selectedBorrowIndex(state, action)
-    case actionTypes.TOGGLE_RETURN_DIALOG: return toggleReturnDialog(state, action)
-    case actionTypes.CLOSE_RETURN_DIALOG: return closeReturnDialog(state, action) 
+    // case actionTypes.TOGGLE_RETURN_DIALOG: return toggleReturnDialog(state, action)
+    // case actionTypes.CLOSE_RETURN_DIALOG: return closeReturnDialog(state, action) 
     default: return state;
   }
 };

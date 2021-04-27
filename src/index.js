@@ -8,13 +8,16 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import bookReducer from './store/reducers/bookReducer';
 import borrowReducer from './store/reducers/borrowReducer';
+import dialogReducer from './store/reducers/dialogReducer';
 import thunk from 'redux-thunk'
 
 const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
 
 const rootReducer = combineReducers({
   book: bookReducer, 
-  borrow: borrowReducer})
+  borrow: borrowReducer,
+  dialog: dialogReducer
+})
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)
 ));

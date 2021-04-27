@@ -5,7 +5,7 @@ const initialState = {
   books: [{color:'lightblue', page:'M', size:'L', title:'treasure'}, 
           {color:'pink', page:'M', size:'M', title: 'gold rush'},
           {color:'orange', page: 'M', size:'S', title:'giving dog'}],
-  showBorrowDialog: false,
+  // showBorrowDialog: false,
   selectedBookIndex: null,
 };
 
@@ -44,12 +44,12 @@ const selectedBookIndex = (state, action) => {
   }
 }
 
-const toggleBorrowDialog = (state, action) => {
-  return {
-    ...state,
-    showBorrowDialog: !state.showBorrowDialog
-  }
-};
+// const toggleBorrowDialog = (state, action) => {
+//   return {
+//     ...state,
+//     showBorrowDialog: !state.showBorrowDialog
+//   }
+// };
 
 const removeSelectedBook = (state, action) => {
   console.log(state.selectedBookIndex)
@@ -60,12 +60,12 @@ const removeSelectedBook = (state, action) => {
   }
 }
 
-const closeBorrowDialog = (state, action)  => {
-  return {
-    ...state,
-    showBorrowDialog: false
-  }
-}
+// const closeBorrowDialog = (state, action)  => {
+//   return {
+//     ...state,
+//     showBorrowDialog: false
+//   }
+// }
 
 const bookReducer = (state = initialState, action) => {
   switch(action.type){
@@ -73,9 +73,9 @@ const bookReducer = (state = initialState, action) => {
     case actionTypes.SORT_BOOK: return sortBook(state, action)  
     case actionTypes.REMOVE_SELECTED_BOOK: return removeSelectedBook(state, action)
     case actionTypes.SELECTED_BOOK_INDEX: return selectedBookIndex(state, action)
-    case actionTypes.TOGGLE_BORROW_DIALOG: return toggleBorrowDialog(state, action)
+    // case actionTypes.TOGGLE_BORROW_DIALOG: return toggleBorrowDialog(state, action)
     case actionTypes.ADD_RETURN_BOOK: return addReturnBook(state, action) 
-    case actionTypes.CLOSE_BORROW_DIALOG: return closeBorrowDialog(state, action) 
+    // case actionTypes.CLOSE_BORROW_DIALOG: return closeBorrowDialog(state, action) 
     default: return state;
   }
 };

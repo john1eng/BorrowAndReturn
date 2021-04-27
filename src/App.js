@@ -14,8 +14,8 @@ function App(props) {
 
   console.log("Render App")
 
-  const showBorrowDialog = useSelector(state => state.book.showBorrowDialog)
-  const showReturnDialog = useSelector(state => state.borrow.showReturnDialog)
+  const showBorrowDialog = useSelector(state => state.dialog.showBorrowDialog)
+  const showReturnDialog = useSelector(state => state.dialog.showReturnDialog)
   
   const Borrows = React.lazy(()=>{
     return import("./components/Borrow/Borrows")
