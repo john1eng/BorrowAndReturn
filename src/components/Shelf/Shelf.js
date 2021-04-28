@@ -23,6 +23,7 @@ const Shelf = () => {
   let shelfWithBooks = [];
   
   const shelfArr = begEndShelf(books);
+  console.log(shelfArr)
 
   for (let i = 0; i < shelfArr.length; i++) {
     shelfWithBooks.push(

@@ -1,23 +1,32 @@
 import * as actionTypes from '../actions/actionTypes';
 import * as types from '../../shared/types'
 
+const books = new Map(
+  [ [1,{color:'lightblue', page:'M', size:'L', title:'treasure'}], 
+    [2,{color:'pink', page:'M', size:'M', title: 'gold rush'}],
+    [3,{color:'orange', page: 'M', size:'S', title:'giving dog'}],
+  ]);
+
 const initialState = {
-  books: [{color:'lightblue', page:'M', size:'L', title:'treasure'}, 
-          {color:'pink', page:'M', size:'M', title: 'gold rush'},
-          {color:'orange', page: 'M', size:'S', title:'giving dog'}],
-  // showBorrowDialog: false,
+  // books: [{color:'lightblue', page:'M', size:'L', title:'treasure'}, 
+  //         {color:'pink', page:'M', size:'M', title: 'gold rush'},
+  //         {color:'orange', page: 'M', size:'S', title:'giving dog'}],
+  books,
   selectedBookIndex: null,
 };
 
 const addNewBook = (state, action) => {
+  console.log("addNewBook")
+  const books = state.books.set((state.books.size+1), {
+    title:  action.payload.title,
+    color:  action.payload.color,
+    page:   action.payload.page,
+    size:   action.payload.size
+  })
+  console.log("books:" , books)
   return {
     ...state,
-        books: [...state.books, {
-          title:  action.payload.title,
-          color:  action.payload.color,
-          page:   action.payload.page,
-          size:   action.payload.size
-        }]
+    books
   }
 }
 

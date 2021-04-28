@@ -12,7 +12,7 @@ export const useFormFunction = () => {
 
   const submitBook = (bookForm) => {
     const [title, color, page, size] = ['Title', 'Color', 'Page', 'Size'].map((attr)=>bookForm[attr].value);
-
+    
     // const color = bookForm["Color"].value;
     // const page = bookForm["Page"].value;
     // const size = bookForm["Size"].value;

@@ -8,14 +8,16 @@ const Books = ({end, beg}) => {
   const book = styles.books
 
   const {books} = useBook();
-
+  console.log(books)
   let booksInShelf =[]
   
   //not the best system to identify there are more books in the shelf then one
-  let numOfBook = ((end-beg) === 1) ? books.length : end 
+  let numOfBook = ((end-beg) === 1) ? books.size : end 
 
-  for(let i = beg; i < numOfBook; i++){
-    booksInShelf.push(<Book key={i} bookAttr={books[i]} index={i} />)
+  for(let i = beg; i <= numOfBook; i++){
+    console.log(i)
+    booksInShelf.push(<Book key={i} bookAttr={books.get(i)} index={i} />)
+    console.log(books.get(i))
   }
   
   return(
