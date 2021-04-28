@@ -10,8 +10,13 @@ const Form = () => {
   //style
   const formStyle = styles.form;
 
-  const {bookForm, formIsValid, fieldChangedHandler} = useFormField();
-  const {onBooksSort, submitBookHandler, randomGenerated} = useFormFunction();
+  const {bookForm, formIsValid, fieldChangedHandler, clearForm} = useFormField();
+  const {onBooksSort, submitBook, randomGenerated} = useFormFunction();
+
+  const submitBookHandler = (bookForm) => {
+    submitBook(bookForm);
+    clearForm();
+  }
 
   // convert bookForm into array
   const formElementsArray = [];

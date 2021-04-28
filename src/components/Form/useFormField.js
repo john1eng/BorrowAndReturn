@@ -81,6 +81,20 @@ export const useFormField = () => {
     setBookForm(updatedBookForm);
     setFormIsValid(formIsValid);
   };
+  const clearForm = () => {
+    setBookForm((prev)=> {
+      return {
+        ...prev,
+        Title: {
+          ...prev.Title,
+            value: '',
+            valid: false,
+            isTouched: false,
+          }
+        }
+      })
+    setFormIsValid(false)
+  }
 
-  return {bookForm, formIsValid, fieldChangedHandler}
+  return {bookForm, formIsValid, fieldChangedHandler, clearForm}
 }
