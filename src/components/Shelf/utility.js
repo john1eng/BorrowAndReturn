@@ -12,8 +12,9 @@ export const begEndShelf = (books) => {
 
     for(let i = 0; i < books.length; i++){
       total += types.bookPageSize[books[i].page]
+      
       //is over the current shelf capacity
-      const isOverCapcity = total > types.shelfSpace
+      const isOverCapcity = (total > types.shelfSpace.width)
       if(isOverCapcity){
         end = i
         shelfArr.push({beg:beg,end:end})
