@@ -6,21 +6,27 @@ import * as types from '../../shared/types'
 export const begEndShelf = (books) => {
 
     let total = 0;
-    let beg = 1;
+    let beg = 0;
     let end;
     let shelfArr = [];
 
-    for(let i = 1; i <= books.size; i++){
-      total += types.bookPageSize[books.get(i).page]
+    let i = 0; //index
+    for(let [key, value] of books){
+      
+      total += types.bookPageSize[value.page]
+      console.log(total, types.shelfSpace.width)
       //is over the current shelf capacity
-      const isOverCapcity = total > types.shelfSpace
+      const isOverCapcity = total > types.shelfSpace.width
       if(isOverCapcity){
         end = i
         shelfArr.push({beg:beg,end:end})
-        beg = end
-        total = types.bookPageSize[books.get(i).page]
+        beg = end+1
+        total = types.bookPageSize[value.page]
       }
+      i++
     }
     shelfArr.push({beg:beg, end:beg+1})
+    console.log("***************")
+    console.log(shelfArr)
     return shelfArr
 }

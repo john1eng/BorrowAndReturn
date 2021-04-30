@@ -13,7 +13,7 @@ const BorrowOrDiscard = React.memo(() => {
   }
 
   const borrowBookHandler = () => {
-    const selectedBook = books[selectedBookIndex]
+    const selectedBook = books.get(selectedBookIndex)
     onBookBorrowed(selectedBook)
   }
 
