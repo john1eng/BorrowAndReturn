@@ -2,12 +2,12 @@ import styles from './Books.module.css';
 import Book from './Book';
 import { useBook } from './useBook';
 
-const Books = ({end, beg}) => {
+const Books = ({end, beg, books}) => {
 
   //styling
   const book = styles.books
 
-  const {books} = useBook();
+  // const {books} = useBook();
 
   let booksInShelf =[]
   

@@ -10,13 +10,24 @@ export const useFormFunction = () => {
 
   const onBooksSort = () => dispatch(actionCreator.sortBook());
 
+  async function addBookToDatabase(book) {
+    const response = await fetch('https://library-fbc4b-default-rtdb.firebaseio.com/books.json', {
+      method: 'POST',
+      body: JSON.stringify(book),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+  }
+
   const submitBook = (bookForm) => {
     const [title, color, page, size] = ['Title', 'Color', 'Page', 'Size'].map((attr)=>bookForm[attr].value);
-
+    addBookToDatabase({title, color, page, size});
     // const color = bookForm["Color"].value;
     // const page = bookForm["Page"].value;
     // const size = bookForm["Size"].value;
-
     onBookAdded({ title, color, page, size });
   };
 
