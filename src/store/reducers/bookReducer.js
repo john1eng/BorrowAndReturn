@@ -2,14 +2,24 @@ import * as actionTypes from '../actions/actionTypes';
 import * as types from '../../shared/types'
 
 const initialState = {
-  books: [{color:'lightblue', page:'M', size:'L', title:'treasure'}, 
-          {color:'pink', page:'M', size:'M', title: 'gold rush'},
-          {color:'orange', page: 'M', size:'S', title:'giving dog'}],
+  // books: [{color:'lightblue', page:'M', size:'L', title:'treasure'}, 
+  //         {color:'pink', page:'M', size:'M', title: 'gold rush'},
+  //         {color:'orange', page: 'M', size:'S', title:'giving dog'}],
+  books: [],
   // showBorrowDialog: false,
   selectedBookIndex: null,
 };
 
+const fetchBooks = (state, action) => {
+  return {
+    ...state,
+    books: action.payload
+  }
+}
+
 const addNewBook = (state, action) => {
+  console.log("add new book")
+  console.log(state)
   return {
     ...state,
         books: [...state.books, {
@@ -52,7 +62,7 @@ const selectedBookIndex = (state, action) => {
 // };
 
 const removeSelectedBook = (state, action) => {
-  console.log(state.selectedBookIndex)
+  console.log("discard book----", state)
   const updatedBooks = state.books.filter((_, ind)=> state.selectedBookIndex !== ind)
   return {
     ...state,
@@ -69,6 +79,7 @@ const removeSelectedBook = (state, action) => {
 
 const bookReducer = (state = initialState, action) => {
   switch(action.type){
+    case actionTypes.FETCH_BOOKS: return fetchBooks(state, action)
     case actionTypes.ADD_NEW_BOOK: return addNewBook(state, action)
     case actionTypes.SORT_BOOK: return sortBook(state, action)  
     case actionTypes.REMOVE_SELECTED_BOOK: return removeSelectedBook(state, action)

@@ -1,15 +1,19 @@
 import React from 'react'
 import classes from './BorrowOrDiscard.module.css'
 import { useBorrowOrDiscard } from './useBorrowOrDiscard';
+import { useFetchBooks }  from '../Shelf/useFetchBooks';
 
 const BorrowOrDiscard = React.memo(() => {
   
   console.log("Render BorrowOrDiscard Dialog")
 
+  const {fetchBooksHandler} = useFetchBooks();
+
   const {onBookBorrowed, onRemoveBook, selectedBookIndex, books} = useBorrowOrDiscard();
   
   const removeBookHandler = () => {
     onRemoveBook()
+    fetchBooksHandler()
   }
 
   const borrowBookHandler = () => {

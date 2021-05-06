@@ -1,5 +1,12 @@
 import * as actionTypes from "./actionTypes";
 
+export const fetchBooks = (books) => {
+  return {
+    type: actionTypes.FETCH_BOOKS,
+    payload: books
+  }
+}
+
 export const addNewBook = (book) => {
   return {
     type: actionTypes.ADD_NEW_BOOK,
@@ -29,7 +36,7 @@ export const borrowBook = (selectedBook) => {
 }
 
 export const selectedBookProcess = (index) => {
-  console.log("selected book process")
+  console.log("selected book process---", index)
   return dispatch => {
     dispatch(selectedBookIndex(index));
     dispatch(toggleBorrowDialog());
