@@ -1,6 +1,13 @@
 import * as actionTypes from "./actionTypes";
 
 
+export const fetchBorrowed = (borrowedBooks) => {
+  return {
+    type: actionTypes.FETCH_BORROWED,
+    payload: borrowedBooks
+  }
+}
+
 export const returnBook = (selectedBorrow) => {
   return dispatch => {
     dispatch(addReturnBook(selectedBorrow));
@@ -9,10 +16,10 @@ export const returnBook = (selectedBorrow) => {
   }
 }
 
-export const selectedBorrowProcess = (index) => {
-  console.log("selected borrow process")
+export const selectedBorrowProcess = (id) => {
+  console.log("selected borrow process --", id)
   return dispatch => {
-    dispatch(selectedBorrowIndex(index));
+    dispatch(selectedBorrowIndex(id));
     dispatch(toggleReturnDialog());
   }
 }

@@ -6,7 +6,7 @@ import { useBook } from './useBook';
 /**
  * individual book attribute
  */
-const Book = ({bookAttr, index}) => {
+const Book = ({bookAttr, id}) => {
   const [color, size, page, title] = ['color', 'size', 'page', 'title'].map((attr)=>bookAttr[attr]);
   const {onSelectedBook} = useBook(); 
 
@@ -18,12 +18,11 @@ const Book = ({bookAttr, index}) => {
     width: types.bookPageSize[page]+'px'
   }
   
-  
 
   return(
     <div  className={book} 
           style={style} 
-          onClick={()=>onSelectedBook(index)}>
+          onClick={()=>onSelectedBook(id)}>
       <span>{title}</span>
     </div>
   )

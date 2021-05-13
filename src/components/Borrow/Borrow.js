@@ -5,7 +5,7 @@ import * as types from '../../shared/types'
 import { useBorrow } from './useBorrow'
 
 
-function Borrow({bookAttr, index}) {
+function Borrow({bookAttr, id}) {
   console.log("render borrow")
   let style = {
     backgroundColor: bookAttr.color,
@@ -18,7 +18,7 @@ function Borrow({bookAttr, index}) {
   return (
     <div  className={classes.Borrow} 
           style={style} 
-          onClick={()=>onSelectedBorrow(index)}>
+          onClick={()=>onSelectedBorrow(id)}>
       <span>{bookAttr.title}</span>
     </div>
   )

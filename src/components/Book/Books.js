@@ -15,7 +15,7 @@ const Books = ({end, beg, books}) => {
   let numOfBook = ((end-beg) === 1) ? books.length : end 
 
   for(let i = beg; i < numOfBook; i++){
-    booksInShelf.push(<Book key={i} bookAttr={books[i]} index={i} />)
+    booksInShelf.push(<Book key={i} bookAttr={books[i]} id={i} />)
   }
   
   return(

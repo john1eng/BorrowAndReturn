@@ -37,7 +37,7 @@ export const borrowBook = (selectedBook) => {
 
 export const selectedBookProcess = (index) => {
   console.log("selected book process---", index)
-  return dispatch => {
+  return (dispatch) => {
     dispatch(selectedBookIndex(index));
     dispatch(toggleBorrowDialog());
   }

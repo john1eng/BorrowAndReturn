@@ -4,7 +4,7 @@ import * as actionCreator from '../../store/actions/book'
 export const useBook = () => {
 
   const dispatch = useDispatch();
-  const onSelectedBook = (index) => dispatch(actionCreator.selectedBookProcess(index));
+  const onSelectedBook = (id) => dispatch(actionCreator.selectedBookProcess(id));
 
   const books = useSelector(state => state.book.books)
 

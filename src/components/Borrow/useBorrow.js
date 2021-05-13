@@ -5,7 +5,7 @@ export const useBorrow = () => {
 
   const dispatch = useDispatch();
 
-  const onSelectedBorrow = (index) => dispatch(actionCreator.selectedBorrowProcess(index))
+  const onSelectedBorrow = (id) => dispatch(actionCreator.selectedBorrowProcess(id))
   const onSortBorrow = ()=> dispatch(actionCreator.sortBorrow());
   const borrowed = useSelector(state => state.borrow.borrowed);
 

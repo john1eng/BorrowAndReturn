@@ -3,6 +3,9 @@ import styles from "./Form.module.css";
 import FormField from "./FormField";
 import { useFormFunction } from "./useFormFunction";
 import { useFormField } from "./useFormField";
+// import { removeAllBooks } from "../../API/bookAPI/removeAllBooks";
+// import { addBooks } from "../../API/bookAPI/addBooks";
+import { useSelector } from "react-redux";
 
 const Form = () => {
   console.log("Render Form");
@@ -13,7 +16,18 @@ const Form = () => {
   const {bookForm, formIsValid, fieldChangedHandler, clearForm} = useFormField();
   const {onBooksSort, submitBook, randomGenerated} = useFormFunction();
 
+  const books = useSelector(state => state.book.books);
+
+  const sortBooksHandler = () => {
+    console.log("sortBooksHandler", books)
+    onBooksSort();
+    // console.log(bookSorted)
+    // await removeAllBooks();
+    // await addBooks(books);
+  }
+
   const submitBookHandler = (bookForm) => {
+    
     submitBook(bookForm);
     clearForm();
   }
@@ -57,7 +71,7 @@ const Form = () => {
         <button className={styles.button} onClick={randomGenerated}>
           random
         </button>
-        <button className={styles.button} onClick={onBooksSort}>
+        <button className={styles.button} onClick={sortBooksHandler}>
           sort
         </button>
       </div>

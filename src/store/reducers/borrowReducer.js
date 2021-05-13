@@ -2,11 +2,19 @@ import * as actionTypes from '../actions/actionTypes';
 import * as types from '../../shared/types'
 
 const initialState = {
-  borrowed: [{color:'lightblue', page:'M', size:'L', title:'hunter'},
-            {color:'lightgreen', page:'M', size:'L', title:'baker'}],
+  // borrowed: [{color:'lightblue', page:'M', size:'L', title:'hunter'},
+  //           {color:'lightgreen', page:'M', size:'L', title:'baker'}],
   // showReturnDialog: false,
+  borrowed: [],
   selectedBorrowIndex: null,
 };
+
+const fetchBorrowed = (state, action) => {
+  return {
+    ...state,
+    borrowed: action.payload
+  }
+}
 
 const sortBorrow = (state, action) => {
   console.log(state.borrowed)
@@ -28,6 +36,7 @@ const removeSelectedBorrow = (state, action) => {
 }
 
 const addBorrow = (state, action) => {
+  console.log(action.payload)
   return{
     ...state,
     borrowed: [...state.borrowed, action.payload]
@@ -57,6 +66,7 @@ const selectedBorrowIndex = (state, action) => {
 
 const borrowReducer = (state = initialState, action) => {
   switch(action.type){
+    case actionTypes.FETCH_BORROWED: return fetchBorrowed(state, action)
     case actionTypes.REMOVE_SELECTED_BORROW: return removeSelectedBorrow(state, action);
     case actionTypes.ADD_BORROW: return addBorrow(state, action)
     case actionTypes.SORT_BORROW: return sortBorrow(state, action)  

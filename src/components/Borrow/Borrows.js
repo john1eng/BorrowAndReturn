@@ -20,7 +20,7 @@ function Borrows() {
   const sortHandler = () => onSortBorrow();
 
   const borrowedBooks = borrowed.map((book, i) => (
-    <Borrow bookAttr={book} index={i} />
+    <Borrow key={i} bookAttr={book} id={i} />
   ));
 
   return (

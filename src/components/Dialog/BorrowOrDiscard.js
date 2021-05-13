@@ -1,23 +1,24 @@
 import React from 'react'
 import classes from './BorrowOrDiscard.module.css'
 import { useBorrowOrDiscard } from './useBorrowOrDiscard';
-import { useFetchBooks }  from '../Shelf/useFetchBooks';
+// import { removeBook } from '../../API/removeBook';
 
 const BorrowOrDiscard = React.memo(() => {
   
   console.log("Render BorrowOrDiscard Dialog")
 
-  const {fetchBooksHandler} = useFetchBooks();
-
   const {onBookBorrowed, onRemoveBook, selectedBookIndex, books} = useBorrowOrDiscard();
   
-  const removeBookHandler = () => {
+  const removeBookHandler = async() => {
+    //remove book from the database
+    // await removeBook(selectedBookIndex)
     onRemoveBook()
-    fetchBooksHandler()
+    // await fetchBooksHandler()
   }
 
   const borrowBookHandler = () => {
     const selectedBook = books[selectedBookIndex]
+    console.log("borrowBook -- ", selectedBook)
     onBookBorrowed(selectedBook)
   }
 

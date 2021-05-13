@@ -23,6 +23,7 @@ const addNewBook = (state, action) => {
   return {
     ...state,
         books: [...state.books, {
+          // id: action.payload.id,
           title:  action.payload.title,
           color:  action.payload.color,
           page:   action.payload.page,
@@ -48,6 +49,7 @@ const addReturnBook = (state, action) => {
 }
 
 const selectedBookIndex = (state, action) => {
+  console.log("selectedBookIndex", action.payload)
   return {
     ...state,
     selectedBookIndex: action.payload
@@ -63,7 +65,7 @@ const selectedBookIndex = (state, action) => {
 
 const removeSelectedBook = (state, action) => {
   console.log("discard book----", state)
-  const updatedBooks = state.books.filter((_, ind)=> state.selectedBookIndex !== ind)
+  const updatedBooks = state.books.filter((book, id)=> {console.log(id); return state.selectedBookIndex !== id})
   return {
     ...state,
     books: updatedBooks

@@ -5,18 +5,19 @@ import { begEndShelf } from "./utility";
 import * as types from '../../shared/types'
 import Books from "../Book/Books";
 import {ShelfStyled} from './ShelfStyled.js'
-import { useFetchBooks } from './useFetchBooks';
 import * as actionCreator from '../../store/actions/book'
+// import { fetchBooks } from '../../API/fetchBooks'
+// import { updateBooks } from '../../API/updateBooks';
+
+let isInitial = true;
 
 const Shelf = () => {
   console.log("render shelf")
-
-  const {error, booksDB, fetchBooksHandler} = useFetchBooks();
   const books = useSelector(state => state.book.books);
 
-  const dispatch = useDispatch();
-  const onBookAdded = (book) =>
-  dispatch(actionCreator.addNewBook(book));
+
+
+
 
   // const shelfContainer = styles.shelfContainer;
   // const top = styles.top;
@@ -31,15 +32,22 @@ const Shelf = () => {
   
   
 
-  useEffect(() => {
-    fetchBooksHandler();
-    // onBookAdded({title: 'tree', page:'M', size:'M', color:'red'});
-  },[fetchBooksHandler])
+  useEffect(()=>{
+    console.log(books)
+    // updateBooks(books);
+    // const updateBooks = async() => { 
+    //   return await updateBooks(books);
+    // } 
+    // updateBooks();
 
-  // console.log(booksDB)
-  console.log(books)
+    // if(isInitial){
+    //   isInitial = false;
+    //   return;
+    // }
+  },[])
+
   const shelfArr = begEndShelf(books);
-
+  console.log(books)
   for (let i = 0; i < shelfArr.length; i++) {
     shelfWithBooks.push(
       <ShelfStyled key={i} shelfSpace={types.shelfSpace.width} shelfHeight={types.shelfSpace.height}>
