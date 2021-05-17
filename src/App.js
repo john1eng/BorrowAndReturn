@@ -1,7 +1,7 @@
 import React from "react";
-import { useMemo, Suspense, useEffect, useCallback } from "react"
+import { useMemo, Suspense, useEffect} from "react"
 import classes from "./App.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { Switch, Route, Redirect } from "react-router";
 
 import Header from "./components/Header/Header"
@@ -10,35 +10,13 @@ import BorrowOrDiscard from "./components/Dialog/BorrowOrDiscard";
 import ReturnOrDiscard from "./components/Dialog/ReturnOrDiscard";
 import Spinner from "./components/UI/Spinner/Spinner";
 import {updateBooks} from "./API/bookAPI/updateBooks"
-import * as actionCreatorBook from './store/actions/book'
-import * as actionCreatorBorrow from './store/actions/borrow'
-import { fetchBooks } from './API/bookAPI/fetchBooks';
-import { fetchBorrowed } from "./API/borrowAPI/fetchBorrowed"
 import { updateBorrowed } from "./API/borrowAPI/updateBorrowed";
-
+import { useFetch } from "./useFetch";
 let isInitial = true;
 
 function App(props) {
 
-  const books = useSelector(state => state.book.books);
-  const borrowed = useSelector(state => state.borrow.borrowed);
-
-  const dispatch = useDispatch();
-  const onFetchBooks = useCallback((books) =>
-    dispatch(actionCreatorBook.fetchBooks(books)),[dispatch]);
-
-  const onFetchBorrowed = useCallback((borrowed) => 
-    dispatch(actionCreatorBorrow.fetchBorrowed(borrowed)),[dispatch]);
-
-  const fetchBooksHandler = useCallback(async() => {
-    const loadedBooks = await fetchBooks();
-    await onFetchBooks(loadedBooks);
-  },[onFetchBooks]);
-
-  const fetchBorrowedHandler = useCallback(async() => {
-    const loadedBorrowed = await fetchBorrowed();
-    onFetchBorrowed(loadedBorrowed)
-  },[onFetchBorrowed])
+  const {books, borrowed, fetchBooksHandler, fetchBorrowedHandler} = useFetch();
 
   useEffect(() => {
     fetchBooksHandler();
