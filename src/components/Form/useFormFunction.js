@@ -4,7 +4,6 @@ import { randomNum, title, color, page, size } from "./utility";
 
 export const useFormFunction = () => {
 
-
   const dispatch = useDispatch();
   const onBookAdded = (book) =>
     dispatch(actionCreator.addNewBook(book));

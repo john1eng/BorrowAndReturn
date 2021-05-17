@@ -3,8 +3,6 @@ import styles from "./Form.module.css";
 import FormField from "./FormField";
 import { useFormFunction } from "./useFormFunction";
 import { useFormField } from "./useFormField";
-// import { removeAllBooks } from "../../API/bookAPI/removeAllBooks";
-// import { addBooks } from "../../API/bookAPI/addBooks";
 import { useSelector } from "react-redux";
 
 const Form = () => {
@@ -21,9 +19,6 @@ const Form = () => {
   const sortBooksHandler = () => {
     console.log("sortBooksHandler", books)
     onBooksSort();
-    // console.log(bookSorted)
-    // await removeAllBooks();
-    // await addBooks(books);
   }
 
   const submitBookHandler = (bookForm) => {

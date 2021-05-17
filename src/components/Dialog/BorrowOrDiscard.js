@@ -10,10 +10,7 @@ const BorrowOrDiscard = React.memo(() => {
   const {onBookBorrowed, onRemoveBook, selectedBookIndex, books} = useBorrowOrDiscard();
   
   const removeBookHandler = async() => {
-    //remove book from the database
-    // await removeBook(selectedBookIndex)
     onRemoveBook()
-    // await fetchBooksHandler()
   }
 
   const borrowBookHandler = () => {

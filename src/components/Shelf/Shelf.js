@@ -10,12 +10,6 @@ const Shelf = () => {
   console.log("render shelf")
   const books = useSelector(state => state.book.books);
 
-  // const shelfContainer = styles.shelfContainer;
-  // const top = styles.top;
-  // const sideLeft = styles.sideLeft;
-  // const sideRight = styles.sideRight;
-  // const bottom = styles.bottom;
-  // const space = styles.space;
   const styleArr = ['shelfContainer', 'top', 'sideLeft', 'sideRight', 'bottom', 'space'];
   const [shelfContainer, top, sideLeft, sideRight, bottom, space] = [...styleArr].map((x)=>styles[x])
   

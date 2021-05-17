@@ -2,9 +2,6 @@ import * as actionTypes from '../actions/actionTypes';
 import * as types from '../../shared/types'
 
 const initialState = {
-  // borrowed: [{color:'lightblue', page:'M', size:'L', title:'hunter'},
-  //           {color:'lightgreen', page:'M', size:'L', title:'baker'}],
-  // showReturnDialog: false,
   borrowed: [],
   selectedBorrowIndex: null,
 };
@@ -18,7 +15,6 @@ const fetchBorrowed = (state, action) => {
 
 const sortBorrow = (state, action) => {
   console.log(state.borrowed)
-  console.log("hello")
   let copyOfBorrow = JSON.parse(JSON.stringify(state.borrowed))
       copyOfBorrow.sort((a,b) =>  types.bookHeightSize[b.size] - types.bookHeightSize[a.size])
       return {
@@ -50,20 +46,6 @@ const selectedBorrowIndex = (state, action) => {
   }
 }
 
-// const toggleReturnDialog = (state, action) => {
-//   return {
-//     ...state,
-//     showReturnDialog: !state.showReturnDialog
-//   }
-// }
-
-// const closeReturnDialog = (state, action)  => {
-//   return {
-//     ...state,
-//     showReturnDialog: false
-//   }
-// }
-
 const borrowReducer = (state = initialState, action) => {
   switch(action.type){
     case actionTypes.FETCH_BORROWED: return fetchBorrowed(state, action)
@@ -71,8 +53,6 @@ const borrowReducer = (state = initialState, action) => {
     case actionTypes.ADD_BORROW: return addBorrow(state, action)
     case actionTypes.SORT_BORROW: return sortBorrow(state, action)  
     case actionTypes.SELECTED_BORROW_INDEX: return selectedBorrowIndex(state, action)
-    // case actionTypes.TOGGLE_RETURN_DIALOG: return toggleReturnDialog(state, action)
-    // case actionTypes.CLOSE_RETURN_DIALOG: return closeReturnDialog(state, action) 
     default: return state;
   }
 };

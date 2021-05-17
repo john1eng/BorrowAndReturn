@@ -6,8 +6,6 @@ const Books = ({end, beg, books}) => {
   //styling
   const book = styles.books
 
-  // const {books} = useBook();
-
   let booksInShelf =[]
   
   //not the best system to identify there are more books in the shelf then one
