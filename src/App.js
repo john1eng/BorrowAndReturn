@@ -24,21 +24,21 @@ function App(props) {
   const borrowed = useSelector(state => state.borrow.borrowed);
 
   const dispatch = useDispatch();
-  const onFetchBooks = (books) =>
-    dispatch(actionCreatorBook.fetchBooks(books));
+  const onFetchBooks = useCallback((books) =>
+    dispatch(actionCreatorBook.fetchBooks(books)),[dispatch]);
 
-  const onFetchBorrowed = (borrowed) => 
-    dispatch(actionCreatorBorrow.fetchBorrowed(borrowed))
+  const onFetchBorrowed = useCallback((borrowed) => 
+    dispatch(actionCreatorBorrow.fetchBorrowed(borrowed)),[dispatch]);
 
   const fetchBooksHandler = useCallback(async() => {
     const loadedBooks = await fetchBooks();
     await onFetchBooks(loadedBooks);
-  },[]);
+  },[onFetchBooks]);
 
   const fetchBorrowedHandler = useCallback(async() => {
     const loadedBorrowed = await fetchBorrowed();
     onFetchBorrowed(loadedBorrowed)
-  },[])
+  },[onFetchBorrowed])
 
   useEffect(() => {
     fetchBooksHandler();
@@ -54,20 +54,6 @@ function App(props) {
     updateBooks(books);
 
   },[books, borrowed])
-  // const dispatch = useDispatch();
-  // const onFetchBooks = (books) =>
-  // dispatch(actionCreator.fetchBooks(books));
-  // useEffect(() => {
-  //   updateBooks(books)
-
-  // }, [])
-
-  // useEffect(()=>{
-  //   if(isInitial){
-  //     isInitial = false;
-  //     return;
-  //   }
-  // },[])
 
   console.log("Render App")
 

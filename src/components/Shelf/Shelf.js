@@ -1,23 +1,14 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React from 'react'
 import styles from "./Shelf.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { begEndShelf } from "./utility";
 import * as types from '../../shared/types'
 import Books from "../Book/Books";
 import {ShelfStyled} from './ShelfStyled.js'
-import * as actionCreator from '../../store/actions/book'
-// import { fetchBooks } from '../../API/fetchBooks'
-// import { updateBooks } from '../../API/updateBooks';
-
-let isInitial = true;
 
 const Shelf = () => {
   console.log("render shelf")
   const books = useSelector(state => state.book.books);
-
-
-
-
 
   // const shelfContainer = styles.shelfContainer;
   // const top = styles.top;
@@ -29,22 +20,6 @@ const Shelf = () => {
   const [shelfContainer, top, sideLeft, sideRight, bottom, space] = [...styleArr].map((x)=>styles[x])
   
   let shelfWithBooks = [];
-  
-  
-
-  useEffect(()=>{
-    console.log(books)
-    // updateBooks(books);
-    // const updateBooks = async() => { 
-    //   return await updateBooks(books);
-    // } 
-    // updateBooks();
-
-    // if(isInitial){
-    //   isInitial = false;
-    //   return;
-    // }
-  },[])
 
   const shelfArr = begEndShelf(books);
   console.log(books)

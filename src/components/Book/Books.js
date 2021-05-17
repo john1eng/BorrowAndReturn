@@ -1,6 +1,5 @@
 import styles from './Books.module.css';
 import Book from './Book';
-import { useBook } from './useBook';
 
 const Books = ({end, beg, books}) => {
 
