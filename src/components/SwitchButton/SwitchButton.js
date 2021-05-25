@@ -9,7 +9,6 @@ function SwitchButton() {
 
   const borrowObj = {name:'BORROWED', link:'/borrow'} 
   const libraryObj = {name:'LIBRARY', link:'/library'}
-  const loginObj = {name:'LOGIN', link:'/login'}
   
   const pathname = window.location.pathname;
   const isMatchLibraryPathname = ['/library', '/'].some((d)=> d===pathname);

@@ -6,6 +6,7 @@ const Login = () => {
   const authCtx = useContext(AuthContext);
 
   const [signIn, setSignIn] = useState(true);
+  let guest = false;
 
   const passInputRef = useRef();
   const emailInputRef = useRef();
@@ -15,47 +16,21 @@ const Login = () => {
   };
 
   const guestHandler = (event) => {
-    event.preventDefault();
-    fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAvBLaelMkggxSEpcwe8PNGd5ZyRUleQ4Y",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email: "guest@guest.com",
-          password: "1234567",
-          returnSecureToken: true,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return res.json().then((data) => {
-            let errorMessage = "Authentication failed!";
-            throw new Error(errorMessage);
-          });
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        const expirationTime = new Date(
-          new Date().getTime() + +data.expiresIn * 1000
-        );
-        authCtx.login(data.idToken, expirationTime.toISOString());
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
+    guest = true;
+    loginHandler(event)
   };
 
-  const loginHandler = (event) => {
+  const loginHandler = async (event) => {
     event.preventDefault();
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPass = passInputRef.current.value;
+    let enteredEmail = emailInputRef.current.value;
+    let enteredPass = passInputRef.current.value;
+    
+    console.log(guest)
+    if(guest){
+      enteredEmail = "guest@guest.com";
+      enteredPass = "1234567"
+    }
+
     let url;
 
     if (signIn) {
@@ -66,7 +41,7 @@ const Login = () => {
         "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAvBLaelMkggxSEpcwe8PNGd5ZyRUleQ4Y";
     }
 
-    fetch(url, {
+    await fetch(url, {
       method: "POST",
       body: JSON.stringify({
         email: enteredEmail,
@@ -114,12 +89,12 @@ const Login = () => {
             >
               submit
             </button>
-            <button
+            {signIn && <button
               className={[classes.guestBtn, classes.btn].join(" ")}
               onClick={guestHandler}
             >
               guest
-            </button>
+            </button>}
           </div>
           <button
             type="button"
