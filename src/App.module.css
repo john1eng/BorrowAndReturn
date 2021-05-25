@@ -12,3 +12,9 @@
   margin-bottom: 15px;
 }
 
+.logoutBtn{
+  cursor: pointer;
+  font-size: 1.6rem;
+  align-self: flex-end;
+  margin-right: 5px;
+}

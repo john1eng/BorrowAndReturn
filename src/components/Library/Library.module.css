@@ -1,4 +1,4 @@
-.Library{
+.Library {
   padding-bottom: 5rem;
   align-items: center;
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.Title{
+.Title {
   font-size: 3rem;
   margin-bottom: 2rem;
 }

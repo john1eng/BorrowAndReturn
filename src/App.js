@@ -1,5 +1,5 @@
 import React from "react";
-import { useMemo, Suspense, useEffect} from "react"
+import { useMemo, Suspense, useEffect, useContext} from "react"
 import classes from "./App.module.css";
 import { useSelector} from "react-redux";
 import { Switch, Route, Redirect } from "react-router";
@@ -12,11 +12,16 @@ import Spinner from "./components/UI/Spinner/Spinner";
 import {updateBooks} from "./API/bookAPI/updateBooks"
 import { updateBorrowed } from "./API/borrowAPI/updateBorrowed";
 import { useFetch } from "./useFetch";
+import Login from "./components/Login/Login";
+import AuthContext from './store/auth-context'
+
+
 let isInitial = true;
 
 function App(props) {
 
   const {books, borrowed, fetchBooksHandler, fetchBorrowedHandler} = useFetch();
+  const authCtx = useContext(AuthContext)
 
   useEffect(() => {
     fetchBooksHandler();
@@ -46,12 +51,18 @@ function App(props) {
     return import("./components/Library/Library")
   })
 
+  console.log(authCtx.isLoggedIn);
+
   let route = (
       <Switch>
-        <Route path="/borrow" render={(props)=><Borrows {...props} />} />
-        <Route path="/library" render={(props)=><Library {...props} />} />
-        <Route path="/" exact render={(props)=><Library {...props} />} />
-        <Redirect to="/" />
+        <Route path="/login">
+          {!authCtx.isLoggedIn && (<Route path="/login" render={(props)=><Login {...props} />}/>)}
+          {authCtx.isLoggedIn && <Redirect to="/library" />}
+        </Route> 
+        {authCtx.isLoggedIn && (<Route path="/borrow" render={(props)=><Borrows {...props} />} />)}
+        {authCtx.isLoggedIn && (<Route path="/library" render={(props)=><Library {...props} />} />)}
+        {authCtx.isLoggedIn && (<Route path="/" exact render={(props)=><Library {...props} />} />)}
+        <Redirect to="/login" />
       </Switch>
   )
 
@@ -73,6 +84,8 @@ function App(props) {
   return (
     <div className={classes.App_Container}>
       <Header />
+      {authCtx.isLoggedIn && <div className={classes.logoutBtn} onClick={authCtx.logout}>logout</div>}
+      <div style={{marginTop: '4rem'}}></div>
       <Suspense fallback={<Spinner />}>
         {route}
       </Suspense>

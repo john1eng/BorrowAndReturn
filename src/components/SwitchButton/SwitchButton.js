@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from "../UI/Button/Button";
-
+import AuthContext from '../../store/auth-context'
 
 
 function SwitchButton() {
+
+  const authCtx = useContext(AuthContext)
+
   const borrowObj = {name:'BORROWED', link:'/borrow'} 
   const libraryObj = {name:'LIBRARY', link:'/library'}
+  const loginObj = {name:'LOGIN', link:'/login'}
   
   const pathname = window.location.pathname;
   const isMatchLibraryPathname = ['/library', '/'].some((d)=> d===pathname);
@@ -19,12 +23,18 @@ function SwitchButton() {
     isMatch ? setButtonProp(borrowObj) : setButtonProp(libraryObj)
   }
   
-  const button = <Button name={buttonProp.name} disabled={true} link={buttonProp.link} click={()=>changeBtn(btnProp.name)} /> 
-  
+  let button; 
+
+  if(authCtx.isLoggedIn){
+    button = <Button name={buttonProp.name} disabled={true} link={buttonProp.link} click={()=>changeBtn(btnProp.name)} /> 
+    } else{
+      button = <Button name="LOGIN" disabled={true} link="/login"/>
+    }
+
   return (
-    <>
+    <div>
       {button}
-    </>
+    </div>
   )
 }
 
