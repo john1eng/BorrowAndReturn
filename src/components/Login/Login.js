@@ -2,9 +2,10 @@ import { useRef, useState, useContext } from "react";
 import classes from "./Login.module.css";
 import AuthContext from "../../store/auth-context";
 
+
 const Login = () => {
   const authCtx = useContext(AuthContext);
-
+  
   const [signIn, setSignIn] = useState(true);
   let guest = false;
 
@@ -25,7 +26,6 @@ const Login = () => {
     let enteredEmail = emailInputRef.current.value;
     let enteredPass = passInputRef.current.value;
     
-    console.log(guest)
     if(guest){
       enteredEmail = "guest@guest.com";
       enteredPass = "1234567"

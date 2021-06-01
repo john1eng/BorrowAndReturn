@@ -12,7 +12,7 @@ import Spinner from "./components/UI/Spinner/Spinner";
 import {updateBooks} from "./API/bookAPI/updateBooks"
 import { updateBorrowed } from "./API/borrowAPI/updateBorrowed";
 import { useFetch } from "./useFetch";
-import Login from "./components/Login/Login";
+// import Login from "./components/Login/Login";
 import AuthContext from './store/auth-context'
 
 
@@ -51,6 +51,9 @@ function App(props) {
     return import("./components/Library/Library")
   })
 
+  const Login = React.lazy(()=> {
+    return import("./components/Login/Login")
+  })
   console.log(authCtx.isLoggedIn);
 
   let route = (
