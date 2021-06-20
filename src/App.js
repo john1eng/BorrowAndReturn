@@ -58,14 +58,14 @@ function App(props) {
 
   let route = (
       <Switch>
-        <Route path="/login">
+        {/* <Route path="/login">
           {!authCtx.isLoggedIn && (<Route path="/login" render={(props)=><Login {...props} />}/>)}
           {authCtx.isLoggedIn && <Redirect to="/library" />}
-        </Route> 
-        {authCtx.isLoggedIn && (<Route path="/borrow" render={(props)=><Borrows {...props} />} />)}
-        {authCtx.isLoggedIn && (<Route path="/library" render={(props)=><Library {...props} />} />)}
-        {authCtx.isLoggedIn && (<Route path="/" exact render={(props)=><Library {...props} />} />)}
-        <Redirect to="/login" />
+        </Route>  */}
+        {(<Route path="/borrow" render={(props)=><Borrows {...props} />} />)}
+        {(<Route path="/library" render={(props)=><Library {...props} />} />)}
+        {(<Route path="/" exact render={(props)=><Library {...props} />} />)}
+        <Redirect to="/" />
       </Switch>
   )
 
