@@ -51,10 +51,10 @@ function App(props) {
     return import("./components/Library/Library")
   })
 
-  const Login = React.lazy(()=> {
-    return import("./components/Login/Login")
-  })
-  console.log(authCtx.isLoggedIn);
+  // const Login = React.lazy(()=> {
+  //   return import("./components/Login/Login")
+  // })
+  // console.log(authCtx.isLoggedIn);
 
   let route = (
       <Switch>
