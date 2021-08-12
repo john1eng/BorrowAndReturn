@@ -4,7 +4,7 @@ import * as types from '../../shared/types'
 import { useBook } from './useBook';
 
 /**
- * individual book attribute
+ * individual book
  */
 const Book = ({bookAttr, id}) => {
   const [color, size, page, title] = ['color', 'size', 'page', 'title'].map((attr)=>bookAttr[attr]);

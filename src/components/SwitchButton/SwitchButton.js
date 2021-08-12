@@ -28,7 +28,7 @@ function SwitchButton() {
 
   let button;
 
-  if (authCtx.isLoggedIn) {
+  if (!authCtx.isLoggedIn) {
     button = (
       <Button
         name={btnProp.name}
